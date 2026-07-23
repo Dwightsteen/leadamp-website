@@ -8,7 +8,8 @@
       "Bash(cp index.html index-backup.html)",
       "Bash(printf 'index-backup.html\\\\n')",
       "Bash(git add *)",
-      "Bash(git commit -q -m 'baseline voor livegang *)"
+      "Bash(git commit -q -m 'baseline voor livegang *)",
+      "Bash(git commit -qam 'stap 1.1: voorgevulde WhatsApp-tekst per taal *)"
     ]
   }
 }

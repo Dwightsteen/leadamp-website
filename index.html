@@ -934,6 +934,17 @@ var FR = {
   "foot.copy":"© 2026 LEAD AMP — digital advertising agency","foot.made":"Conçu pour les artisans de la construction"
 };
 
+/* ============================================================
+   WHATSAPP — nummer en voorgevuld bericht
+   Het nummer staat hier één keer. Wijzig je het, wijzig dan ook de
+   tel:-links en de zichtbare nummers in de HTML.
+   ============================================================ */
+var WA_NUMMER = '32470123456';
+var WA_TEKST = {
+  nl: 'Hallo, ik ben [naam] van [zaak] uit [gemeente]. Ik wil meer aanvragen voor mijn bouwbedrijf.',
+  fr: "Bonjour, je suis [nom] de [entreprise] à [commune]. Je souhaite plus de demandes pour mon entreprise."
+};
+
 (function(){
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -954,6 +965,11 @@ var FR = {
       if(attr){ el.setAttribute(attr, val); }
       else { el.innerHTML = val; }
     });
+    /* WhatsApp-links krijgen een voorgevuld bericht in de juiste taal */
+    var tekst = encodeURIComponent(WA_TEKST[lang] || WA_TEKST.nl);
+    document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
+      a.setAttribute('href', 'https://wa.me/' + WA_NUMMER + '?text=' + tekst);
+    });
     document.documentElement.lang = lang;
     document.querySelectorAll('.langtog button').forEach(function(b){
       b.classList.toggle('on', b.getAttribute('data-lang') === lang);
@@ -965,7 +981,7 @@ var FR = {
   });
   var saved = 'nl';
   try{ saved = localStorage.getItem('leadamp-lang') || 'nl'; }catch(e){}
-  if(saved === 'fr') applyLang('fr');
+  applyLang(saved); // altijd uitvoeren: zet ook de WhatsApp-links klaar
 
   /* sticky nav */
   var header = document.getElementById('header');
