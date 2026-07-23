@@ -336,10 +336,16 @@
   .fact .ico svg{width:19px;height:19px;color:var(--blue)}
 
   /* prijssignaal + veelgestelde vragen */
-  .pricecard{max-width:760px;padding:26px 30px;background:var(--gold-soft);border-radius:var(--r);margin-bottom:clamp(38px,5vw,56px)}
-  .pc-lbl{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-  .pricecard p{color:var(--ink-soft);font-size:16px;line-height:1.62;max-width:56ch}
+  .pricesplit{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:900px}
+  .pricecard{padding:30px 32px;background:var(--gold-soft);border-radius:var(--r)}
+  .pricecard.alt{background:var(--blue-soft)}
+  .pc-lbl{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+  .pricecard.alt .pc-lbl{color:var(--blue)}
+  .pricecard h3{font-size:1.18rem;margin-bottom:12px}
+  .pricecard p{color:var(--ink-soft);font-size:15.5px;line-height:1.64}
   .pricecard b{color:var(--ink);font-weight:700}
+  .price-note{max-width:900px;margin:20px 0 clamp(38px,5vw,56px);color:var(--muted);font-size:15.5px;line-height:1.6}
+  @media(max-width:860px){.pricesplit{grid-template-columns:1fr}}
   .faq{max-width:760px;border-top:1px solid var(--line-soft)}
   .faq details{border-bottom:1px solid var(--line-soft)}
   .faq summary{
@@ -887,7 +893,7 @@
         <div class="fact reveal">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
           <h3 data-i18n="why.c2h">Vast maandbedrag</h3>
-          <p data-i18n="why.c2p">Eén helder bedrag voor Meta én Google samen. Maandelijks opzegbaar, geen setupkosten.</p>
+          <p data-i18n="why.c2p">Eén vast bedrag voor ons werk aan Meta én Google. Je advertentiebudget staat daar los van en gaat rechtstreeks naar de platformen.</p>
         </div>
         <div class="fact reveal">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
@@ -910,17 +916,38 @@
         <h2 class="h2" data-i18n="faq.h2">Wat aannemers ons meestal eerst vragen.</h2>
       </div>
 
-      <!-- PRIJSSIGNAAL — variant A (zonder bedrag).
-           Zodra je een anker wil tonen, vervang de tekst door:
-           NL "Vanaf €[X] per maand, alles inbegrepen."
-           FR "À partir de €[X] par mois, tout compris."
-           en vul [X] in. -->
-      <div class="pricecard reveal">
-        <div class="pc-lbl" data-i18n="price.lbl">Wat het kost</div>
-        <p data-i18n="price.p"><b>Eén vast maandbedrag voor Meta én Google samen, zonder setupkosten.</b> Het bedrag hangt af van je werkgebied en hoeveel werk je erbij kan hebben — dat stemmen we af in het kennismakingsgesprek. Maandelijks opzegbaar, dus je zit nergens aan vast.</p>
+      <!-- ============================================================
+           PRIJSSIGNAAL — TWEE GESCHEIDEN KOSTEN
+           Dit onderscheid moet glashelder zijn, want hier zit het
+           wantrouwen: aannemers denken dat een bureau marge neemt op
+           het advertentiebudget. Zeg dus expliciet dat dat niet zo is.
+
+           Zodra je een bedrag wil tonen, vervang in price.fee1p:
+             NL "Vanaf €[X] per maand."
+             FR "À partir de €[X] par mois."
+           Doe hetzelfde in price.ad1p voor een richtbudget, bv.
+           "De meeste bouwbedrijven starten rond €[X] per maand."
+           Vul NOOIT een bedrag in dat je nog niet vastgelegd hebt.
+           ============================================================ -->
+      <div class="pricesplit reveal">
+        <div class="pricecard">
+          <div class="pc-lbl" data-i18n="price.fee1l">1 · Ons werk</div>
+          <h3 data-i18n="price.fee1h">Vast maandbedrag voor de campagnes</h3>
+          <p data-i18n="price.fee1p">Advertenties en beeld maken, de aanvraagpagina bouwen, de campagnes op Meta en Google opzetten en ze elke werkdag opvolgen en bijsturen. Eén vast bedrag per maand, <b>geen setupkosten en maandelijks opzegbaar</b>. Wat het wordt, hangt af van je werkgebied en hoeveel werk je erbij kan hebben — dat leggen we vast in het kennismakingsgesprek.</p>
+        </div>
+        <div class="pricecard alt">
+          <div class="pc-lbl" data-i18n="price.ad1l">2 · Je advertentiebudget</div>
+          <h3 data-i18n="price.ad1h">Gaat rechtstreeks naar Meta en Google</h3>
+          <p data-i18n="price.ad1p">Dit is het geld waarmee je advertenties draaien. Het loopt <b>rechtstreeks van jouw kaart naar Meta en Google</b> — het passeert niet langs ons en we nemen er geen commissie op. Het staat op een advertentieaccount op jouw naam, dus je ziet zelf tot op de euro wat eraan uitgegeven wordt. Jij bepaalt het bedrag en kan het op elk moment hoger of lager zetten.</p>
+        </div>
       </div>
+      <p class="price-note reveal" data-i18n="price.note">De twee staan volledig los van elkaar. Verhoog je je advertentiebudget, dan verandert ons maandbedrag niet — en omgekeerd.</p>
 
       <div class="faq reveal">
+        <details>
+          <summary data-i18n="faq.q0">Zit het advertentiebudget in jullie maandbedrag?</summary>
+          <p data-i18n="faq.a0">Nee. Dat zijn twee gescheiden kosten. Ons maandbedrag is de vergoeding voor ons werk: de advertenties maken, de campagnes beheren en dagelijks bijsturen. Het advertentiebudget betaal je rechtstreeks aan Meta en Google, van je eigen kaart op je eigen advertentieaccount. Wij zien dat geld nooit passeren en nemen er geen commissie op. Je kan het budget op elk moment aanpassen zonder dat ons bedrag meebeweegt.</p>
+        </details>
         <details>
           <summary data-i18n="faq.q1">Wie bezit het advertentieaccount en de gegevens?</summary>
           <p data-i18n="faq.a1">Jij. We werken in een advertentieaccount op naam van jouw bedrijf, en jij blijft eigenaar van het account, de campagnegegevens en alle aanvragen die eruit komen. Stopt de samenwerking, dan blijft alles staan waar het staat.</p>
@@ -1223,13 +1250,20 @@ var FR = {
   "plan.s3h":"Les premières demandes arrivent","plan.s3p":"Une fois la campagne lancée, les premières demandes ne se font en général pas attendre longtemps. Chaque demande arrive via WhatsApp ou e-mail, avec le nom, la commune et ce qu'il faut faire. Vous rappelez.",
 
   "why.c1h":"Uniquement votre région","why.c1p":"Nous faisons de la publicité uniquement dans votre zone de travail. Pas de demandes de loin où vous ne vous déplacez pas.",
-  "why.c2h":"Montant mensuel fixe","why.c2p":"Un montant clair pour Meta et Google ensemble. Résiliable chaque mois, sans frais de démarrage.",
+  "why.c2h":"Montant mensuel fixe","why.c2p":"Un montant fixe pour notre travail sur Meta et Google. Votre budget publicitaire en est distinct et va directement aux plateformes.",
   "why.c3h":"Tout via WhatsApp","why.c3p":"Un interlocuteur fixe et vos demandes dans la même application. Pas de centre d'appels ni de système de tickets.",
 
   "faq.eyebrow":"Avant que vous ne le demandiez",
   "faq.h2":"Ce que les entrepreneurs nous demandent en premier.",
-  "price.lbl":"Ce que ça coûte",
-  "price.p":"<b>Un montant mensuel fixe pour Meta et Google ensemble, sans frais de démarrage.</b> Le montant dépend de votre zone de travail et du volume de travail que vous pouvez absorber — nous l'ajustons lors de la prise de contact. Résiliable chaque mois, vous n'êtes donc engagé à rien.",
+  "price.fee1l":"1 · Notre travail",
+  "price.fee1h":"Montant mensuel fixe pour les campagnes",
+  "price.fee1p":"Créer les publicités et les visuels, construire la page de demande, mettre en place les campagnes sur Meta et Google et les suivre et ajuster chaque jour ouvré. Un montant fixe par mois, <b>sans frais de démarrage et résiliable chaque mois</b>. Le montant dépend de votre zone de travail et du volume de travail que vous pouvez absorber — nous le fixons lors de la prise de contact.",
+  "price.ad1l":"2 · Votre budget publicitaire",
+  "price.ad1h":"Va directement à Meta et Google",
+  "price.ad1p":"C'est l'argent qui fait tourner vos publicités. Il part <b>directement de votre carte vers Meta et Google</b> — il ne passe pas par nous et nous ne prenons aucune commission dessus. Il se trouve sur un compte publicitaire à votre nom : vous voyez donc à l'euro près ce qui est dépensé. C'est vous qui fixez le montant et vous pouvez l'augmenter ou le baisser à tout moment.",
+  "price.note":"Les deux sont totalement indépendants. Si vous augmentez votre budget publicitaire, notre montant mensuel ne change pas — et inversement.",
+  "faq.q0":"Le budget publicitaire est-il compris dans votre montant mensuel ?",
+  "faq.a0":"Non. Ce sont deux coûts distincts. Notre montant mensuel rémunère notre travail : créer les publicités, gérer les campagnes et les ajuster quotidiennement. Le budget publicitaire, vous le payez directement à Meta et Google, depuis votre propre carte sur votre propre compte publicitaire. Cet argent ne passe jamais par nous et nous n'y prenons aucune commission. Vous pouvez adapter le budget à tout moment sans que notre montant bouge.",
   "faq.q1":"Qui possède le compte publicitaire et les données ?",
   "faq.a1":"Vous. Nous travaillons dans un compte publicitaire au nom de votre entreprise, et vous restez propriétaire du compte, des données de campagne et de toutes les demandes qui en découlent. Si la collaboration s'arrête, tout reste en place.",
   "faq.q2":"Et si ça ne marche pas — puis-je arrêter ?",
