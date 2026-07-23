@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"c:/Users/dwigh/Dev/Website LEAD AMP\" && grep -c \"data-i18n\" index.html && grep -n \"<section\\\\|<footer\\\\|<header\" index.html && echo \"--- laatst gewijzigd:\" && stat -c '%y  %s bytes' index.html)",
+      "Read(//c/Users/dwigh/Dev/Website LEAD AMP/**)",
+      "Bash(git init *)",
+      "Bash(git config *)",
+      "Bash(cp index.html index-backup.html)",
+      "Bash(printf 'index-backup.html\\\\n')",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'baseline voor livegang *)"
+    ]
+  }
+}

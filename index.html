@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title data-i18n="meta.title">LEAD AMP — digital advertising die bouwbedrijven meer warme aanvragen oplevert</title>
+<meta name="description" data-i18n-attr="content" data-i18n="meta.desc" content="LEAD AMP versterkt jouw bouwbedrijf met Meta- en Google-advertenties: een stroom exclusieve, warme aanvragen uit jouw eigen regio. Maandelijks opzegbaar, geen setupkosten.">
+<!-- favicon: hetzelfde logo, als SVG in de pagina zelf -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 38 34'%3E%3Crect x='1' y='21' width='5' height='8' rx='2.5' fill='%230F1B3D'/%3E%3Crect x='7.5' y='15' width='5' height='14' rx='2.5' fill='%230F1B3D'/%3E%3Crect x='14' y='9' width='5' height='20' rx='2.5' fill='%230F1B3D'/%3E%3Crect x='20.5' y='2' width='5' height='27' rx='2.5' fill='%23A9761F'/%3E%3Cpath d='M28.5 9a11 11 0 0 1 0 16' fill='none' stroke='%23A9761F' stroke-width='2' stroke-linecap='round' opacity='0.45'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     LEAD AMP — landingspagina
+     Opbouw = de zes beats van het verhaal. De klant is de held,
+     LEAD AMP is de gids. In deze volgorde:
+
+       1  DE HELD          hero — zijn situatie, niet onze dienst
+       2  DE VIJAND        de stille agenda (extern, nooit zijn schuld)
+       3  DE GIDS          empathie (team) + autoriteit (aanpak, bewijs)
+       4  HET PLAN         drie stappen, angst weg
+       5  DE OPROEP        één knop, één actie
+       6  DE ONTKNOPING    beide richtingen: als het lukt / als niets verandert
+
+     Beat 2 en 6 zijn per klant uniek. Beat 1, 3, 4 en 5 schrijf je
+     één keer. Zie de comments bij die secties.
+     ============================================================ */
+
+  :root{
+    /* licht, rustig, veel wit */
+    --paper:#FCFBF9;
+    --paper-warm:#F5F2EC;
+    --ink:#101725;
+    --ink-soft:#2B3348;
+    --muted:#414A61;
+    --muted-dim:#6E778D;
+    --navy:#0F1B3D;
+    --blue:#2A50D4;
+    --blue-soft:#EEF1FD;
+    --gold:#A9761F;
+    --gold-soft:#F6EFE1;
+    --green:#0C8A48;
+    --line:rgba(16,23,37,0.10);
+    --line-soft:rgba(16,23,37,0.06);
+    --r:16px;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',system-ui,sans-serif;
+    font-size:17.5px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--navy);color:#fff}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  .wrap{max-width:1080px;margin:0 auto;padding:0 32px;position:relative}
+  .narrow{max-width:780px}
+
+  h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:600;line-height:1.06;letter-spacing:-0.03em;color:var(--ink)}
+  .display{font-size:clamp(2.6rem,6.4vw,4.9rem);font-weight:600}
+  .h2{font-size:clamp(1.95rem,4vw,3.05rem)}
+  .lede{color:var(--muted);font-size:clamp(1.08rem,1.6vw,1.32rem);line-height:1.6;max-width:44ch}
+  .blue{color:var(--blue)}
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;
+    letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);
+    display:inline-flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:24px;height:1px;background:var(--gold);display:inline-block;opacity:.55}
+
+  /* ---------- knoppen ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    font-family:'Manrope';font-weight:700;font-size:15.5px;letter-spacing:-0.01em;
+    padding:16px 28px;border-radius:100px;border:1px solid transparent;cursor:pointer;
+    transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s,border-color .25s;
+    white-space:nowrap;
+  }
+  .btn svg{width:19px;height:19px}
+  .btn-wa{background:var(--green);color:#fff;box-shadow:0 12px 26px -14px rgba(12,138,72,.65)}
+  .btn-wa:hover{transform:translateY(-2px);box-shadow:0 18px 34px -14px rgba(12,138,72,.75)}
+  .btn-ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--ink);background:#fff}
+  .btn-lg{padding:19px 34px;font-size:16.5px}
+
+  .textlink{
+    display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:16px;color:var(--ink);
+    border-bottom:1px solid var(--line);padding-bottom:3px;transition:border-color .2s,color .2s;
+  }
+  .textlink:hover{border-color:var(--ink)}
+  .textlink svg{width:17px;height:17px;color:var(--muted-dim)}
+
+  /* ---------- nav ---------- */
+  header{position:sticky;top:0;z-index:50;transition:background .3s,border-color .3s,backdrop-filter .3s;border-bottom:1px solid transparent}
+  header.scrolled{background:rgba(252,251,249,.86);backdrop-filter:blur(14px);border-bottom-color:var(--line-soft)}
+  /* Twee rijen: bovenaan merk en actie, daaronder het menu op een eigen
+     regel. Het menu wordt zo niet meer geknepen tussen naam en knop. */
+  .nav-top{display:flex;align-items:center;justify-content:space-between;gap:28px;height:92px;transition:height .3s}
+  /* bij het scrollen krimpt de header, zodat twee rijen niet te veel
+     schermruimte innemen */
+  header.scrolled .nav-top{height:72px}
+  header.scrolled .navlinks{padding-top:11px;padding-bottom:12px}
+  /* ---------- merk + logo ----------
+     Het logo is de amplitude van een signaal dat luider wordt:
+     vier staven die oplopen, de laatste in goud — hetzelfde motief
+     als de balkjes in het amp·li·fy-blok verderop. */
+  /* Raster: logo en naam naast elkaar op één basislijn (de onderkant van
+     de staven loopt gelijk met de onderkant van de letters), de ondertitel
+     eronder over de volle breedte — dus ook onder het logo. */
+  .brand{display:grid;grid-template-columns:auto auto;column-gap:9px;row-gap:11px;justify-content:start;align-items:baseline;color:var(--navy)}
+  .logo{grid-row:1;grid-column:1;width:36px;height:auto;display:block}
+  .logo .bar{fill:var(--navy)}
+  .logo .bar-hi{fill:var(--gold)}
+  .logo .arc{fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;opacity:.45}
+  /* Lettergrootte is afgeleid van de logohoogte: de kapitaalhoogte van
+     Bricolage is ±0,73em, dus font-size ≈ logohoogte ÷ 0,73. Zo zijn de
+     letters even hoog als de staven. */
+  .brand-name{grid-row:1;grid-column:2;font-family:'Bricolage Grotesque';font-weight:700;font-size:clamp(32px,3.6vw,44px);letter-spacing:-0.04em;line-height:1}
+  /* Ondertitel loopt over beide kolommen en wordt uitgevuld tot exact
+     de breedte van logo + naam. */
+  .brand-sub{grid-row:2;grid-column:1 / -1;width:100%;font-family:'JetBrains Mono';font-size:clamp(10.6px,1.05vw,12.6px);font-weight:500;letter-spacing:.01em;color:var(--muted-dim);line-height:1.1;text-align:justify;text-align-last:justify;-moz-text-align-last:justify}
+  .navlinks{display:flex;justify-content:center;gap:0;font-size:15.5px;color:var(--muted);font-weight:600;white-space:nowrap;border-top:1px solid var(--line-soft);padding:16px 0 18px;transition:padding .3s}
+  .navlinks a{position:relative;transition:color .2s,border-color .2s;padding:0 28px 4px;border-bottom:2px solid transparent}
+  .navlinks a:hover{color:var(--ink);border-bottom-color:var(--gold)}
+  /* verticaal scheidingsstreepje: een dunne gegraveerde lijn — donker
+     lijntje met een lichte rand ernaast geeft diepte op het papier */
+  .navlinks a + a::before{
+    content:"";position:absolute;left:0;top:2px;width:1px;height:15px;
+    background:linear-gradient(180deg,transparent,rgba(16,23,37,.22),transparent);
+    box-shadow:1px 0 0 rgba(255,255,255,.85);
+  }
+  .navcta{display:flex;align-items:center;gap:16px}
+
+  .langtog{display:inline-flex;align-items:center;border:1px solid var(--line);border-radius:100px;overflow:hidden;background:#fff}
+  .langtog button{font-family:'JetBrains Mono';font-size:11.5px;font-weight:700;letter-spacing:.08em;color:var(--muted-dim);background:transparent;border:0;padding:8px 12px;cursor:pointer;transition:color .2s,background .2s}
+  .langtog button.on{color:#fff;background:var(--navy)}
+  .langtog button:not(.on):hover{color:var(--ink)}
+
+  /* ---------- ruime secties ---------- */
+  section.block{padding:clamp(86px,11vw,164px) 0;position:relative}
+  section.block.tight{padding-top:0}
+  .sec-head{max-width:720px;margin-bottom:clamp(48px,6vw,86px)}
+  .sec-head .eyebrow{margin-bottom:26px}
+  .sec-head h2{margin-bottom:24px}
+  .sec-head p{color:var(--muted);font-size:1.13rem;max-width:54ch}
+  .rule{height:1px;background:var(--line-soft);border:0}
+
+  /* ============================================================
+     BEAT 1 — DE HELD
+     Eerste zin gaat over zijn agenda, niet over onze dienst.
+     Hij moet zichzelf hierin herkennen voor hij weet wat wij doen.
+     ============================================================ */
+  .hero{padding:clamp(34px,5vw,72px) 0 clamp(56px,8vw,110px)}
+  /* sectorregel: hoger op de pagina en groter dan een gewone eyebrow */
+  .hero-sector{font-size:15px;letter-spacing:.16em;font-weight:700;margin-bottom:30px}
+  .hero-sector::before{width:32px}
+  /* exclusiviteitsblok in de hero — eigen regel, niet naast de sectorregel */
+  .hero-lock{
+    display:flex;align-items:flex-start;gap:13px;max-width:56ch;
+    margin:0 0 36px;padding:18px 22px;background:#fff;
+    border:1px solid var(--line);border-left:3px solid var(--green);border-radius:14px;
+    font-size:15.5px;line-height:1.55;color:var(--ink-soft);
+  }
+  .hero-lock b{color:var(--ink);font-weight:700}
+  .hero-lock svg{width:19px;height:19px;flex:none;color:var(--green);margin-top:2px}
+  .hero h1{margin-bottom:30px;max-width:15ch}
+  .hero .lede{margin-bottom:44px;max-width:50ch}
+  .hero-cta{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin-bottom:40px}
+  .assurance{display:flex;flex-wrap:wrap;gap:12px 30px;color:var(--muted);font-size:14.5px;font-weight:600}
+  .assurance span{display:flex;align-items:center;gap:9px}
+  .assurance svg{width:16px;height:16px;color:var(--green)}
+
+  /* ---------- amp·li·fy ---------- */
+  .define{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:var(--paper-warm)}
+  .define .wrap{padding:clamp(52px,7vw,88px) 32px;display:grid;grid-template-columns:auto 1fr;gap:clamp(34px,7vw,84px);align-items:center}
+  .define .w{font-family:'Bricolage Grotesque';font-weight:700;font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.035em;line-height:1;color:var(--navy)}
+  .define .ipa{font-family:'JetBrains Mono';font-size:13px;color:var(--gold);margin-top:14px}
+  .define .pos{font-family:'JetBrains Mono';font-size:12px;color:var(--muted-dim);margin-top:5px}
+  .define .bars-mini{display:flex;align-items:flex-end;gap:5px;height:38px;margin-top:26px}
+  .define .bars-mini i{width:6px;background:linear-gradient(180deg,var(--blue),rgba(42,80,212,.14));border-radius:3px;display:block;height:0;transition:height .7s cubic-bezier(.2,.8,.2,1)}
+  .define .bars-mini i:last-child{background:linear-gradient(180deg,var(--gold),rgba(169,118,31,.16))}
+  .define .meaning{border-left:1px solid var(--line);padding-left:clamp(28px,5vw,60px)}
+  .define .m1{font-size:1.04rem;color:var(--muted);line-height:1.6;margin-bottom:20px;max-width:52ch}
+  .define .m2{font-family:'Bricolage Grotesque';font-weight:500;font-size:clamp(1.16rem,2.2vw,1.7rem);line-height:1.32;letter-spacing:-.02em;color:var(--ink);max-width:34ch}
+
+  /* ---------- marquee sectoren ---------- */
+  .marquee{border-bottom:1px solid var(--line-soft);padding:22px 0;overflow:hidden;position:relative}
+  .marquee .track{display:flex;width:max-content;animation:scroll 46s linear infinite}
+  .marquee span{font-family:'JetBrains Mono';font-size:13px;color:var(--muted-dim);letter-spacing:.03em;padding:0 24px;display:flex;align-items:center;gap:24px;white-space:nowrap}
+  .marquee span::after{content:"◆";color:var(--gold);font-size:6px;opacity:.6}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+
+  /* ============================================================
+     BEAT 2 — DE VIJAND
+     PERSONALISEERBAAR. De vijand van een dakwerker op platte daken
+     in de haven is niet die van een renovatiebedrijf bij particulieren.
+     Vraag er in het kennismakingsgesprek naar en zet zijn eigen
+     woorden hier terug — ook in de advertentie en op de landingspagina.
+     Regel: de vijand blijft extern. Nooit "je marketing is slecht" —
+     dan maak je hem de schuldige en haakt hij af.
+     ============================================================ */
+  .enemy-list{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(40px,7vw,92px)}
+  .enemy-item{padding:38px 0;border-top:1px solid var(--line-soft)}
+  .enemy-item .k{font-family:'JetBrains Mono';font-size:11.5px;letter-spacing:.16em;color:var(--gold);margin-bottom:16px}
+  .enemy-item h3{font-size:1.3rem;margin-bottom:12px}
+  .enemy-item p{color:var(--muted);font-size:16px;line-height:1.6;max-width:42ch}
+
+  /* ---------- herhaalde, rustige CTA-regel ---------- */
+  .cta-line{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:clamp(46px,6vw,76px);padding-top:34px;border-top:1px solid var(--line-soft)}
+  .cta-line span{color:var(--muted);font-size:16.5px;max-width:44ch}
+
+  /* ============================================================
+     BEAT 3 — DE GIDS
+     Twee dingen zijn nodig, in deze volgorde:
+       empathie  ("we weten hoe een stille maand voelt")  → het team
+       autoriteit (exclusiviteit, kanalen, opvolging, bewijs)
+     Autoriteit zonder empathie is opschepperij. Empathie zonder
+     autoriteit is enkel medeleven.
+     ============================================================ */
+  .guide-intro{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,5vw,72px);align-items:center}
+  .photo-slot{border-radius:var(--r);aspect-ratio:4/5;display:grid;place-items:center;text-align:center;padding:28px;overflow:hidden;background:var(--paper-warm)}
+  .photo-slot img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+  .photo-slot .ph-ico{width:40px;height:40px;color:var(--muted-dim);margin:0 auto 16px}
+  .photo-slot p{color:var(--muted-dim);font-size:13px;line-height:1.5;max-width:26ch;font-family:'JetBrains Mono'}
+  .guide-text h3{font-size:clamp(1.4rem,2.6vw,2rem);margin-bottom:20px;max-width:20ch}
+  .guide-text p{color:var(--muted);font-size:16.8px;line-height:1.68;margin-bottom:18px;max-width:52ch}
+  .guide-text p b{color:var(--ink);font-weight:700}
+  .guide-text .sign{font-family:'JetBrains Mono';font-size:12.5px;color:var(--muted-dim);letter-spacing:.03em;margin-top:26px}
+
+  /* invulplekken: stippellijn verdwijnt zodra .slot weg is */
+  .slot{border:1px dashed var(--line);background:var(--paper-warm)}
+  .slot-tag{font-family:'JetBrains Mono';font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+
+  /* twee beloftes — geen kaarten, gewoon lucht en een lijn */
+  .promise{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px)}
+  .promise .p1{border-top:2px solid var(--gold);padding-top:30px}
+  .promise .p2{border-top:2px solid var(--blue);padding-top:30px}
+  .promise .mark{font-family:'Bricolage Grotesque';font-weight:700;letter-spacing:-.04em;line-height:1;margin-bottom:22px}
+  .promise .p1 .mark{color:var(--gold);font-size:clamp(2.6rem,5.5vw,3.6rem)}
+  .promise .p2 .mark{color:var(--blue);font-size:clamp(1.5rem,2.8vw,1.95rem)}
+  .promise h3{font-size:1.32rem;margin-bottom:14px}
+  .promise p{color:var(--muted);font-size:16px;line-height:1.66;max-width:44ch}
+  .promise p b{color:var(--ink);font-weight:700}
+  .excl-rules{list-style:none;display:flex;flex-direction:column;gap:15px;margin-top:24px;max-width:46ch}
+  .excl-rules li{display:flex;gap:12px;color:var(--muted);font-size:15.5px;line-height:1.55}
+  .excl-rules svg{width:18px;height:18px;flex:none;color:var(--green);margin-top:3px}
+  .excl-rules b{color:var(--ink);font-weight:700}
+  .excl-note{margin-top:24px;padding-top:20px;border-top:1px solid var(--line-soft);font-size:15px;color:var(--muted-dim);line-height:1.6;max-width:46ch}
+
+  /* twee kanalen */
+  .channels{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px)}
+  .channel .tag{font-family:'JetBrains Mono';font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-dim);margin-bottom:16px;display:block}
+  .channel h3{font-size:1.32rem;margin-bottom:14px}
+  .channel p{color:var(--muted);font-size:16px;line-height:1.66;max-width:44ch}
+
+  /* dagelijkse opvolging — rustige rijen */
+  .watch .row{display:grid;grid-template-columns:auto 1fr 1.35fr;gap:clamp(20px,3vw,48px);align-items:start;padding:32px 0;border-top:1px solid var(--line-soft)}
+  .watch .row:last-child{border-bottom:1px solid var(--line-soft)}
+  .watch .row .k{font-family:'JetBrains Mono';font-size:11.5px;color:var(--gold);letter-spacing:.16em;padding-top:7px}
+  .watch .row h3{font-size:1.18rem;line-height:1.3}
+  .watch .row p{color:var(--muted);font-size:16px;line-height:1.66}
+  .watch-foot{margin-top:36px;color:var(--muted);font-size:16.8px;line-height:1.66;max-width:58ch}
+  .watch-foot b{color:var(--ink);font-weight:700}
+
+  /* bewijs */
+  .proof-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:26px;align-items:stretch}
+  .case-slot{border:1px solid var(--line);border-radius:var(--r);padding:clamp(30px,4vw,44px);background:#fff}
+  .cs-mark{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+  .case-slot h3{font-size:1.3rem;margin-bottom:14px}
+  .case-slot p{color:var(--muted);font-size:16px;line-height:1.66;margin-bottom:28px;max-width:48ch}
+  .video-slot{border-radius:var(--r);aspect-ratio:16/10;display:grid;place-items:center;text-align:center;padding:26px}
+  .video-slot .ph-ico{width:40px;height:40px;color:var(--muted-dim);margin:0 auto 14px}
+  .video-slot p{color:var(--muted-dim);font-size:13px;font-family:'JetBrains Mono';line-height:1.5;max-width:30ch}
+
+  /* ============================================================
+     BEAT 4 — HET PLAN
+     Drie stappen, niet meer. Mensen kopen geen resultaat waarvan
+     ze het pad niet zien.
+     ============================================================ */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(30px,5vw,64px)}
+  .step .num{font-family:'JetBrains Mono';font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.16em;margin-bottom:20px;display:flex;align-items:center;gap:14px}
+  .step .num::after{content:"";flex:1;height:1px;background:var(--line)}
+  .step h3{font-size:1.24rem;margin-bottom:12px}
+  .step p{color:var(--muted);font-size:15.8px;line-height:1.62}
+
+  /* praktisch */
+  .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,5vw,60px)}
+  .fact h3{font-size:1.1rem;margin-bottom:10px}
+  .fact p{color:var(--muted);font-size:15.5px;line-height:1.6}
+  .fact .ico{width:38px;height:38px;border-radius:10px;background:var(--blue-soft);display:grid;place-items:center;margin-bottom:18px}
+  .fact .ico svg{width:19px;height:19px;color:var(--blue)}
+
+  /* ============================================================
+     BEAT 6 — DE ONTKNOPING  +  BEAT 5 — DE OPROEP
+     Twee richtingen: wat er gebeurt als het lukt, en wat er gebeurt
+     als er niets verandert. Zonder inzet geen spanning, dus geen
+     beslissing. De ontknoping is per klant uniek — schrijf ze in
+     zijn woorden. Daarna: één knop, één actie.
+     ============================================================ */
+  .stakes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,70px);margin-bottom:clamp(56px,7vw,96px)}
+  .stake{padding-top:28px}
+  .stake.good{border-top:2px solid var(--blue)}
+  .stake.bad{border-top:2px solid var(--line)}
+  .stake .st-lbl{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.16em;text-transform:uppercase;margin-bottom:16px}
+  .stake.good .st-lbl{color:var(--blue)}
+  .stake.bad .st-lbl{color:var(--muted-dim)}
+  .stake p{color:var(--muted);font-size:16.5px;line-height:1.66;max-width:42ch}
+  .stake.good p{color:var(--ink-soft)}
+
+  .final{text-align:center;padding:clamp(56px,7vw,96px) 32px;border-top:1px solid var(--line-soft)}
+  .final .eyebrow{justify-content:center;margin-bottom:26px}
+  .final h2{margin-bottom:22px}
+  .final p{color:var(--muted);font-size:1.14rem;max-width:46ch;margin:0 auto 40px}
+  .final .callnum{font-family:'JetBrains Mono';font-size:14px;color:var(--muted);margin-top:26px}
+  .final .callnum a{color:var(--ink);border-bottom:1px solid var(--line)}
+
+  /* ---------- footer ---------- */
+  footer{border-top:1px solid var(--line-soft);padding:72px 0 44px;background:var(--paper-warm)}
+  .foot{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:44px;margin-bottom:52px}
+  .foot .brand{margin-bottom:18px}
+  .foot p{color:var(--muted);font-size:14.5px;max-width:34ch}
+  .foot h4{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-dim);margin-bottom:18px;font-weight:500}
+  .foot ul{list-style:none;display:flex;flex-direction:column;gap:11px}
+  .foot ul a{color:var(--muted);font-size:14.5px;transition:color .2s}
+  .foot ul a:hover{color:var(--ink)}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-top:28px;border-top:1px solid var(--line-soft);color:var(--muted-dim);font-size:12.5px;font-family:'JetBrains Mono';flex-wrap:wrap}
+
+  /* ---------- mobiele balk ---------- */
+  .mobar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:60;padding:12px 14px calc(12px + env(safe-area-inset-bottom));gap:10px;background:rgba(252,251,249,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+  .mobar .btn{flex:1;padding:15px}
+
+  /* ---------- reveal ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+  .reveal.in{opacity:1;transform:none}
+
+  @media(max-width:960px){
+    .promise,.channels,.enemy-list{grid-template-columns:1fr}
+    .enemy-list{gap:0}
+    .steps,.facts{grid-template-columns:1fr 1fr}
+    .proof-grid{grid-template-columns:1fr}
+    .guide-intro{grid-template-columns:1fr}
+    .photo-slot{aspect-ratio:3/2}
+    .foot{grid-template-columns:1fr 1fr}
+  }
+  @media(max-width:760px){
+    .watch .row{grid-template-columns:1fr;gap:10px;padding:26px 0}
+    .watch .row .k{padding-top:0}
+    .stakes{grid-template-columns:1fr}
+    .cta-line{flex-direction:column;align-items:flex-start}
+  }
+  @media(max-width:680px){
+    body{font-size:16.5px;padding-bottom:74px}
+    .wrap{padding:0 22px}
+    /* header niet laten verdringen door het grotere logo */
+    .nav-top{height:74px}
+    /* menu blijft staan, maar compacter en horizontaal scrollbaar */
+    .navlinks{gap:0;font-size:14px;padding-top:13px;padding-bottom:14px;overflow-x:auto;scrollbar-width:none;justify-content:flex-start}
+    .navlinks a{padding:0 16px 4px}
+    .navlinks a:first-child{padding-left:0}
+    .navlinks::-webkit-scrollbar{display:none}
+    header .brand{column-gap:7px;row-gap:8px}
+    header .logo{width:26px;height:auto}
+    header .brand-name{font-size:31px}
+    /* op een smal scherm past uitvullen niet meer: één regel, natuurlijke breedte */
+    header .brand-sub{font-size:9.4px;letter-spacing:.01em;white-space:nowrap;text-align-last:auto;-moz-text-align-last:auto}
+    header .navcta .btn-wa{display:none}
+    .steps,.facts{grid-template-columns:1fr}
+    .mobar{display:flex}
+    .hero-cta .btn{flex:1}
+    .define .wrap{grid-template-columns:1fr;gap:26px}
+    .define .meaning{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:24px}
+  }
+  @media(prefers-reduced-motion:reduce){
+    *{animation-duration:.001ms!important;transition:none!important}
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap">
+   <div class="nav-top">
+    <a href="#" class="brand" aria-label="LEAD AMP">
+      <!-- LOGO — oplopende amplitude + uitgezonden signaal -->
+      <svg class="logo" viewBox="0 0 34 30" aria-hidden="true">
+        <rect class="bar" x="1" y="21" width="5" height="8" rx="2.5"/>
+        <rect class="bar" x="7.5" y="15" width="5" height="14" rx="2.5"/>
+        <rect class="bar" x="14" y="9" width="5" height="20" rx="2.5"/>
+        <rect class="bar-hi" x="20.5" y="2" width="5" height="27" rx="2.5"/>
+        <path class="arc" d="M28.5 9a11 11 0 0 1 0 16"/>
+      </svg>
+      <span class="brand-name">LEAD&nbsp;AMP</span>
+      <span class="brand-sub">digital marketing · bouwsector</span>
+    </a>
+    <div class="navcta">
+      <div class="langtog" role="group" aria-label="Taal / Langue">
+        <button type="button" data-lang="nl" class="on">NL</button>
+        <button type="button" data-lang="fr">FR</button>
+      </div>
+      <a class="btn btn-wa" href="https://wa.me/32470123456"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12 2a10 10 0 0 0-8.6 15.06L2 22l5.06-1.33A10 10 0 1 0 12 2z"/></svg><span data-i18n="cta.wa">Stuur een WhatsApp</span></a>
+    </div>
+   </div>
+   <!-- menu op een eigen regel onder het merk — niet meer geknepen tussen
+        de naam en de knop -->
+   <nav class="navlinks">
+     <a href="#stille-agenda" data-i18n="nav.agenda">Meer aanvragen</a>
+     <a href="#gids" data-i18n="nav.gids">Over ons</a>
+     <a href="#aanpak" data-i18n="nav.aanpak">Aanpak</a>
+     <a href="#plan" data-i18n="nav.plan">Het plan</a>
+   </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ============================================================
+       BEAT 1 — DE HELD
+       ============================================================ -->
+  <section class="hero">
+    <div class="wrap">
+      <!-- sectorfocus: het eerste wat je leest, boven de titel -->
+      <span class="eyebrow hero-sector" data-i18n="hero.sector">100% gericht op de bouwsector</span>
+      <h1 class="display" data-i18n="hero.h1">Ontvang warme leads <span class="blue">het hele jaar door</span></h1>
+      <p class="lede" data-i18n="hero.lede">Je levert vakwerk. Het enige dat schommelt, is hoeveel aanvragen er binnenkomen. Wij brengen daar structuur in — een vaste stroom projectaanvragen uit je eigen regio, exclusief voor jou.</p>
+
+      <!-- exclusiviteit staat vlak vóór de knop: het laatste wat hij leest
+           voor hij klikt, en het antwoord op "krijgt mijn concurrent dit ook?" -->
+      <div class="hero-lock">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        <span data-i18n="hero.lock"><b>Wie jouw formulier invult, vraagt naar jou.</b> Die aanvraag gaat naar jou en naar niemand anders. Wij verkopen of delen een aanvraag nooit door aan een tweede bouwbedrijf.</span>
+      </div>
+
+      <div class="hero-cta">
+        <a class="btn btn-wa btn-lg" href="https://wa.me/32470123456"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12 2a10 10 0 0 0-8.6 15.06L2 22l5.06-1.33A10 10 0 1 0 12 2z"/></svg><span data-i18n="cta.wa">Stuur een WhatsApp</span></a>
+        <a class="textlink" href="tel:+32470123456"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-i18n="cta.call">Of bel direct</span></a>
+      </div>
+      <div class="assurance">
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="assure.1">100% exclusieve leads</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="assure.2">Maandelijks opzegbaar</span></span>
+        <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="assure.3">Geen setupkosten</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- amp·li·fy — wat de naam betekent -->
+  <section class="define">
+    <div class="wrap">
+      <div class="word">
+        <div class="w">amp·li·fy</div>
+        <div class="ipa">/ˈæm.plɪ.faɪ/</div>
+        <div class="pos" data-i18n="define.pos">werkwoord — Engels</div>
+        <div class="bars-mini" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="meaning">
+        <p class="m1" data-i18n="define.m1">versterken, vergroten, luider maken. Een signaal nemen dat er al is — en het hoorbaar maken voor wie het moet horen.</p>
+        <p class="m2" data-i18n="define.m2">Dat is wat wij met jouw bouwbedrijf doen. Je vakwerk is het signaal. Wij zetten er bereik op, zodat de juiste mensen je vinden en een offerte vragen.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- de vakken waar we voor werken -->
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      <span>Dakwerken</span><span>Renovatie</span><span>Aannemers</span><span>Schrijnwerk</span><span>Elektriciteit</span><span>Sanitair &amp; verwarming</span><span>Isolatie</span><span>Ramen &amp; deuren</span><span>Zwembadbouw</span><span>Gevelwerken</span><span>Tuinaanleg</span><span>Betonwerken</span>
+      <span>Dakwerken</span><span>Renovatie</span><span>Aannemers</span><span>Schrijnwerk</span><span>Elektriciteit</span><span>Sanitair &amp; verwarming</span><span>Isolatie</span><span>Ramen &amp; deuren</span><span>Zwembadbouw</span><span>Gevelwerken</span><span>Tuinaanleg</span><span>Betonwerken</span>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       BEAT 2 — DE VIJAND
+       Personaliseer deze vier per klant. Zie de comment in de CSS.
+       ============================================================ -->
+  <section class="block" id="stille-agenda">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="enemy.eyebrow">De stille agenda</span>
+        <h2 class="h2" data-i18n="enemy.h2">Het ligt niet aan je werk.<br>Het ligt aan wat je agenda bepaalt.</h2>
+        <p data-i18n="enemy.p">Je weet wat je kan. Alleen beslist iets anders wanneer de telefoon gaat — en dat is precies het probleem.</p>
+      </div>
+
+      <div class="enemy-list">
+        <div class="enemy-item reveal">
+          <div class="k">01</div>
+          <h3 data-i18n="enemy.c1h">Het seizoen beslist</h3>
+          <p data-i18n="enemy.c1p">Druk in het najaar, stilte in het voorjaar. Je agenda volgt het weer en de markt in plaats van andersom.</p>
+        </div>
+        <div class="enemy-item reveal">
+          <div class="k">02</div>
+          <h3 data-i18n="enemy.c2h">Mond-tot-mond droogt op</h3>
+          <p data-i18n="enemy.c2p">Eén wijk of één opdrachtgever levert maanden werk. Tot dat klaar is en het opnieuw stil wordt.</p>
+        </div>
+        <div class="enemy-item reveal">
+          <div class="k">03</div>
+          <h3 data-i18n="enemy.c3h">Bieden tegen vier anderen</h3>
+          <p data-i18n="enemy.c3p">Op offerteplatformen krijgt de klant jouw nummer én dat van de rest. Het draait op prijs, niet op vakmanschap.</p>
+        </div>
+        <div class="enemy-item reveal">
+          <div class="k">04</div>
+          <h3 data-i18n="enemy.c4h">Goede maanden zijn niet te herhalen</h3>
+          <p data-i18n="enemy.c4p">Een sterke maand voelt goed, maar je kan niet aanwijzen waardoor het kwam — dus ook niet nog eens doen.</p>
+        </div>
+      </div>
+
+      <div class="cta-line reveal">
+        <span data-i18n="enemy.cta">Herkenbaar? Vertel in twee zinnen wat er bij jou speelt.</span>
+        <a class="btn btn-wa" href="https://wa.me/32470123456"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12 2a10 10 0 0 0-8.6 15.06L2 22l5.06-1.33A10 10 0 1 0 12 2z"/></svg><span data-i18n="cta.wa">Stuur een WhatsApp</span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BEAT 3a — DE GIDS: EMPATHIE
+       Wij zijn niet de held. Hier laten we enkel zien dat we het
+       probleem kennen — en wie er achter de campagnes zit.
+
+       FOTO VAN HET TEAM — INVULPLEK
+       Vervang het <div class="photo-slot slot"> blok door:
+         <div class="photo-slot"><img src="foto-team.jpg" alt="..."></div>
+       Liefst een echte foto op locatie (op een werf, bij de wagen,
+       of gewoon met z'n tweeën) — geen stockfoto, geen studioportret.
+       Staand, 4:5, minimaal 1000 × 1250 px.
+       ============================================================ -->
+  <section class="block" id="gids">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="guide.eyebrow">Wie er naast je staat</span>
+        <h2 class="h2" data-i18n="guide.h2">Wij kennen dat stille voorjaar.</h2>
+        <p data-i18n="guide.p">We hebben genoeg bouwbedrijven gesproken om te weten hoe een rustige maand voelt: je blijft werken, maar je rekent. Jij blijft de vakman — wij zorgen enkel dat de juiste mensen je zien.</p>
+      </div>
+
+      <div class="guide-intro">
+        <div class="photo-slot slot reveal">
+          <div>
+            <svg class="ph-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="9" cy="10" r="2.5"/><path d="M2 17l5.5-5 4 3.5L15.5 12l6.5 6"/></svg>
+            <div class="slot-tag" data-i18n="team.slottag">Foto komt hier</div>
+            <p data-i18n="team.slotp">Staande foto van het team — 4:5, min. 1000 × 1250 px</p>
+          </div>
+        </div>
+        <div class="guide-text reveal">
+          <h3 data-i18n="team.h3">Wie er achter de campagnes zit</h3>
+          <!-- INVULLEN: namen, achtergrond en waarom jullie met bouwbedrijven werken.
+               Houd het menselijk en kort. Twee alinea's is genoeg. -->
+          <p data-i18n="team.p1"><b>[Naam]</b> en <b>[Naam]</b> — wij zijn LEAD AMP en richten ons bewust op één sector: de bouw. Niet omdat het de makkelijkste markt is, maar omdat we ondertussen weten hoe een bouwofferte eruitziet en waarom de ene aanvraag wél werk oplevert en de andere niet.</p>
+          <p data-i18n="team.p2">[Korte alinea over jullie achtergrond en waarom je met bouwbedrijven begon. Eén concreet detail zegt meer dan drie mooie zinnen.]</p>
+          <div class="sign">LEAD AMP · digital advertising voor de bouw</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BEAT 3b — DE GIDS: AUTORITEIT
+       Wat we anders doen, hoe we het doen, en hoe we het opvolgen.
+       Geen cijfers die we nog niet hebben — enkel wat waar is.
+       ============================================================ -->
+  <section class="block tight" id="aanpak">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="promise.eyebrow">Waarop het meestal misgaat</span>
+        <h2 class="h2" data-i18n="promise.h2">Twee dingen bepalen of adverteren werkt.</h2>
+        <p data-i18n="promise.p">Bij wie ons belt, gaat het bijna altijd op dezelfde twee punten mis. Daar hebben we onze aanpak op gebouwd.</p>
+      </div>
+
+      <div class="promise">
+        <div class="p1 reveal">
+          <div class="mark">100%</div>
+          <h3 data-i18n="promise.exclh">Eén aanvraag, één bouwbedrijf</h3>
+          <p data-i18n="promise.exclp">Wie op jouw advertentie klikt en jouw formulier invult, <b>vraagt naar jou</b>. Die aanvraag komt bij jou terecht en bij niemand anders. Dat is het verschil met vergelijkingssites: daar vult iemand één formulier in en wordt dat ene nummer aan vijf aannemers verkocht, die hem allemaal opbellen.</p>
+          <ul class="excl-rules">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="promise.exclr1"><b>Nooit doorverkocht.</b> Er is geen gedeelde leadpool waar meerdere bedrijven uit putten. Een aanvraag die bij jou binnenkomt, gaat nergens anders naartoe — dat is ons verdienmodel niet.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="promise.exclr2"><b>Je adverteert onder je eigen naam.</b> Eigen beeld, eigen tekst, eigen aanvraagpagina. Mensen kiezen voor jouw zaak en jouw werk, niet voor een lijstje met vier offertes naast elkaar.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="promise.exclr3"><b>De keuze ligt bij de klant.</b> Hij beslist zelf op welke advertentie hij klikt en bij wie hij een offerte vraagt. Wie zijn werk het best toont en het snelst terugbelt, wint — niet wie het goedkoopste biedt.</span></li>
+          </ul>
+          <p class="excl-note" data-i18n="promise.exclnote">Duidelijk gezegd: exclusief slaat bij ons op de <b>aanvraag</b>, niet op de markt. Een eigenaar kan altijd zelf nog een tweede aannemer aanspreken — dat doet hij vandaag ook. Wat wij garanderen is dat wij zijn gegevens nooit aan iemand anders doorgeven, en dat jij ze meteen in WhatsApp krijgt zodat je als eerste aan de lijn hangt.</p>
+        </div>
+        <div class="p2 reveal">
+          <div class="mark">AI-targeting</div>
+          <h3 data-i18n="promise.aih">Scherper mikken dan een advertentie voor iedereen</h3>
+          <p data-i18n="promise.aip">We werken met de <b>nieuwste AI-targetingtools</b> om je advertenties bij de juiste mensen te krijgen: eigenaars en beslissers in jouw regio die nú aan hun project denken. Scherper targeten betekent betere aanvragen en minder budget naar wie toch niet koopt.</p>
+        </div>
+      </div>
+
+      <div class="cta-line reveal" style="margin-bottom:clamp(80px,10vw,140px)">
+        <span data-i18n="pack.eyebrow">Eén pakket, twee kanalen — Meta voor wie nog niet zoekt, Google voor wie nú iets nodig heeft.</span>
+      </div>
+
+      <div class="channels">
+        <div class="channel reveal">
+          <span class="tag">Meta</span>
+          <h3 data-i18n="pack.metah">Voordat ze zoeken</h3>
+          <p data-i18n="pack.metap">Facebook en Instagram bereiken mensen die nog niet actief op zoek zijn. Iemand die al twee winters twijfelt over zijn renovatie, ziet jouw werk voorbijkomen en vraagt een offerte aan. Dit levert het volume.</p>
+        </div>
+        <div class="channel reveal">
+          <span class="tag">Google Search</span>
+          <h3 data-i18n="pack.googleh">Nu een probleem</h3>
+          <p data-i18n="pack.googlep">Wie vandaag "aannemer in de buurt" of "dak hersteld" intikt, heeft nu iemand nodig. Daar staan we bovenaan. Minder volume, hoogste intentie — dit zijn de dringende werken.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- dagelijkse opvolging -->
+  <section class="block tight" id="opvolging">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="watch.eyebrow">Dagelijkse opvolging</span>
+        <h2 class="h2" data-i18n="watch.h2">Je campagne blijft niet staan waar hij startte.</h2>
+        <p data-i18n="watch.p">De meeste campagnes worden aangezet en dan vergeten. Bij jouw campagne kijkt er elke werkdag iemand naar — dat is het verschil tussen advertentiebudget uitgeven en advertentiebudget laten renderen.</p>
+      </div>
+
+      <div class="watch">
+        <div class="row reveal">
+          <div class="k">01</div>
+          <h3 data-i18n="watch.r1h">Elke dag bekeken</h3>
+          <p data-i18n="watch.r1p">Je campagne wordt dagelijks opgevolgd. Zo zien we het meteen wanneer de aanvragen vertragen of duurder worden — niet pas bij het maandrapport, wanneer het geld al weg is.</p>
+        </div>
+        <div class="row reveal">
+          <div class="k">02</div>
+          <h3 data-i18n="watch.r2h">Meteen bijgestuurd</h3>
+          <p data-i18n="watch.r2p">Werkt een advertentie niet, dan gaat ze eruit. Loopt een doelgroep beter dan verwacht, dan verschuiven we daarheen. Je wacht niet tot het einde van de maand om te weten dat er iets mis liep.</p>
+        </div>
+        <div class="row reveal">
+          <div class="k">03</div>
+          <h3 data-i18n="watch.r3h">Wat werkt, gaat omhoog</h3>
+          <p data-i18n="watch.r3p">We kijken welke advertenties de meeste aanvragen opleveren tegen de laagste kost, en zetten daar meer budget op. Je beste advertentie krijgt zo de meeste ruimte.</p>
+        </div>
+        <div class="row reveal">
+          <div class="k">04</div>
+          <h3 data-i18n="watch.r4h">Voortdurend vergeleken</h3>
+          <p data-i18n="watch.r4p">Er lopen altijd meerdere versies naast elkaar — ander beeld, andere tekst, andere doelgroep. Die vergelijking stopt nooit, want wat vorige maand het beste werkte, is dat volgende maand niet automatisch nog.</p>
+        </div>
+      </div>
+
+      <p class="watch-foot reveal" data-i18n="watch.foot">Het resultaat daarvan is eenvoudig: <b>elke euro advertentiebudget gaat naar wat op dat moment het meeste aanvragen oplevert.</b> Geen budget dat maandenlang naar een advertentie loopt die niemand meer aanklikt.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BEWIJS — GERESERVEERDE PLEK
+       Bewust geen voorbeeldcijfers: elk bouwbedrijf, elke regio en
+       elk budget geeft een ander resultaat, en getoonde cijfers
+       worden gelezen als een belofte. Vervang dit blok pas door
+       echte cijfers wanneer de pilot ze oplevert — met de naam van
+       het bedrijf erbij, anders telt het niet als bewijs.
+       ============================================================ -->
+  <section class="block tight" id="bewijs">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="proof.eyebrow">Bewijs</span>
+        <h2 class="h2" data-i18n="proof.h2">De eerste cijfers komen van een bouwbedrijf uit de streek.</h2>
+        <p data-i18n="proof.p">We zetten hier liever geen voorbeeldcampagne neer: elke regio, elk vak en elk budget geeft een ander resultaat. Wat hier komt te staan, zijn echte cijfers met een naam erbij — uit de pilot die nu loopt.</p>
+      </div>
+      <div class="proof-grid">
+        <div class="case-slot reveal">
+          <div class="cs-mark" data-i18n="proof.mark">Pilot loopt</div>
+          <h3 data-i18n="proof.caseh">Nog één plaats in de pilot</h3>
+          <p data-i18n="proof.casep">Eén bouwbedrijf, 30 dagen, tegen kostprijs — je betaalt enkel het advertentiebudget. In ruil delen we de cijfers en vragen we een korte videoreactie als het werkt. Voorwaarde: je hebt de ruimte om de aanvragen ook effectief op te volgen.</p>
+          <a class="btn btn-wa" href="https://wa.me/32470123456"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12 2a10 10 0 0 0-8.6 15.06L2 22l5.06-1.33A10 10 0 1 0 12 2z"/></svg><span data-i18n="cta.pilot">Vraag de pilot aan</span></a>
+        </div>
+
+        <!-- VIDEOTESTIMONIAL — INVULPLEK
+             Een telefoonvideo van 40 seconden werkt beter dan een
+             professionele montage. Echt weegt zwaarder dan mooi. -->
+        <div class="video-slot slot reveal">
+          <div>
+            <svg class="ph-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>
+            <div class="slot-tag" data-i18n="proof.videotag">Videoreactie komt hier</div>
+            <p data-i18n="proof.videop">Korte reactie van het eerste bouwbedrijf — naam, zaak en gemeente eronder</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BEAT 4 — HET PLAN
+       ============================================================ -->
+  <section class="block" id="plan">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="plan.eyebrow">Het plan</span>
+        <h2 class="h2" data-i18n="plan.h2">Drie stappen. Verder hoef jij niets te doen.</h2>
+        <p data-i18n="plan.p">Geen maandenlange opstart, geen marketingjargon. Je weet vooraf precies wat er wanneer gebeurt.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="num">01</div>
+          <h3 data-i18n="plan.s1h">Kennismaking van 20 minuten</h3>
+          <p data-i18n="plan.s1p">Je vertelt in welke regio je werkt, welke projecten je het liefst doet en hoeveel je erbij kan hebben.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">02</div>
+          <h3 data-i18n="plan.s2h">Campagne live binnen 5 dagen</h3>
+          <p data-i18n="plan.s2p">Wij bouwen advertenties, beeld en aanvraagpagina op jouw naam. Meta en Google gaan samen live.</p>
+        </div>
+        <div class="step reveal">
+          <div class="num">03</div>
+          <h3 data-i18n="plan.s3h">De eerste aanvragen komen binnen</h3>
+          <p data-i18n="plan.s3p">Zodra de campagne draait, laten de eerste aanvragen meestal niet lang op zich wachten. Elke aanvraag komt binnen via WhatsApp of mail, met naam, gemeente en wat er moet gebeuren. Jij belt op.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- praktische afspraken — haalt de laatste twijfel weg -->
+  <section class="block tight">
+    <div class="wrap">
+      <hr class="rule" style="margin-bottom:clamp(48px,6vw,80px)">
+      <div class="facts">
+        <div class="fact reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <h3 data-i18n="why.c1h">Alleen jouw regio</h3>
+          <p data-i18n="why.c1p">We adverteren enkel binnen jouw werkgebied. Geen aanvragen van ver weg waar je toch niet rijdt.</p>
+        </div>
+        <div class="fact reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <h3 data-i18n="why.c2h">Vast maandbedrag</h3>
+          <p data-i18n="why.c2p">Eén helder bedrag voor Meta én Google samen. Maandelijks opzegbaar, geen setupkosten.</p>
+        </div>
+        <div class="fact reveal">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3 data-i18n="why.c3h">Alles via WhatsApp</h3>
+          <p data-i18n="why.c3p">Eén vast aanspreekpunt en je aanvragen in dezelfde app. Geen callcenter of ticketsysteem.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       BEAT 6 — DE ONTKNOPING  en  BEAT 5 — DE OPROEP
+       Personaliseer de twee kaders per klant: schrijf zijn eigen
+       toekomst, in zijn eigen woorden uit het kennismakingsgesprek.
+
+       NOG IN TE VULLEN — ECHTE CONTACTGEGEVENS
+       Zoek-en-vervang in dit bestand:
+         32470123456        -> telefoonnummer (tel:- en wa.me-links
+                               én de zichtbare tekst)
+         hallo@leadamp.be   -> e-mailadres
+       WhatsApp-formaat: wa.me/ + landcode zonder + en zonder eerste nul.
+       0470 12 34 56 wordt dus wa.me/32470123456.
+       ============================================================ -->
+  <section class="block" id="contact">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="stake.eyebrow">Waar het op uitdraait</span>
+        <h2 class="h2" data-i18n="stake.h2">Twee versies van volgend voorjaar.</h2>
+      </div>
+      <div class="stakes">
+        <div class="stake good reveal">
+          <div class="st-lbl" data-i18n="stake.goodl">Als het lukt</div>
+          <p data-i18n="stake.goodp">Je agenda raakt beter gevuld en blijft dat ook. Je kan kiezen welke werven je aanneemt en welke offerte je bewust hoog legt, omdat je die opdracht niet nodig hebt.</p>
+        </div>
+        <div class="stake bad reveal">
+          <div class="st-lbl" data-i18n="stake.badl">Als er niets verandert</div>
+          <p data-i18n="stake.badp">Dezelfde stille maanden als vorig jaar. Blijven bieden op prijs tegen vier anderen, en wachten tot het weer meezit.</p>
+        </div>
+      </div>
+
+      <div class="final reveal">
+        <span class="eyebrow" data-i18n="final.eyebrow">De keuze</span>
+        <h2 class="h2" data-i18n="final.h2">Volgend seizoen hoeft niet stil te zijn.</h2>
+        <p data-i18n="final.p">Stuur een WhatsApp. Binnen een dag weet je of we voor jouw zaak aanvragen kunnen binnenhalen — vrijblijvend, geen verkoopspraatje.</p>
+        <a class="btn btn-wa btn-lg" href="https://wa.me/32470123456"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12 2a10 10 0 0 0-8.6 15.06L2 22l5.06-1.33A10 10 0 1 0 12 2z"/></svg><span data-i18n="cta.wa_us">Stuur een WhatsApp</span></a>
+        <div class="callnum"><span data-i18n="final.or">Liever bellen of mailen?</span> <a href="tel:+32470123456">+32 470 12 34 56</a> · <a href="mailto:hallo@leadamp.be">hallo@leadamp.be</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <div class="brand">
+          <svg class="logo" viewBox="0 0 34 30" aria-hidden="true">
+            <rect class="bar" x="1" y="21" width="5" height="8" rx="2.5"/>
+            <rect class="bar" x="7.5" y="15" width="5" height="14" rx="2.5"/>
+            <rect class="bar" x="14" y="9" width="5" height="20" rx="2.5"/>
+            <rect class="bar-hi" x="20.5" y="2" width="5" height="27" rx="2.5"/>
+            <path class="arc" d="M28.5 9a11 11 0 0 1 0 16"/>
+          </svg>
+          <span class="brand-name">LEAD&nbsp;AMP</span>
+          <span class="brand-sub">digital marketing · bouwsector</span>
+        </div>
+        <p data-i18n="foot.about">Meta- en Google-campagnes die bouwbedrijven een vaste stroom warme aanvragen opleveren. 100% exclusieve leads via AI-targeting, vast maandbedrag.</p>
+      </div>
+      <div>
+        <h4 data-i18n="foot.menu">Menu</h4>
+        <ul>
+          <li><a href="#stille-agenda" data-i18n="nav.agenda">De stille agenda</a></li>
+          <li><a href="#gids" data-i18n="nav.gids">Wie wij zijn</a></li>
+          <li><a href="#aanpak" data-i18n="nav.aanpak">Aanpak</a></li>
+          <li><a href="#opvolging" data-i18n="watch.eyebrow">Dagelijkse opvolging</a></li>
+          <li><a href="#plan" data-i18n="nav.plan">Het plan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="nav.contact">Contact</h4>
+        <ul>
+          <li><a href="https://wa.me/32470123456">WhatsApp</a></li>
+          <li><a href="tel:+32470123456">+32 470 12 34 56</a></li>
+          <li><a href="mailto:hallo@leadamp.be">hallo@leadamp.be</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 data-i18n="foot.area">Werkgebied</h4>
+        <p data-i18n="foot.areap">Actief in heel België. We stemmen elke campagne af op jouw eigen werkgebied — van één stad tot meerdere provincies.</p>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span data-i18n="foot.copy">© 2026 LEAD AMP — digital advertising agency</span>
+      <span data-i18n="foot.made">Gemaakt voor vakmensen in de bouw</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mobar">
+  <a class="btn btn-ghost" href="tel:+32470123456"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span data-i18n="cta.call_short">Bellen</span></a>
+  <a class="btn btn-wa" href="https://wa.me/32470123456"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12 2a10 10 0 0 0-8.6 15.06L2 22l5.06-1.33A10 10 0 1 0 12 2z"/></svg><span data-i18n="cta.wa_short">WhatsApp</span></a>
+</div>
+
+<script>
+/* ============================================================
+   TAAL — NL / FR
+   Het Nederlands staat rechtstreeks in de HTML (bewerk het daar).
+   Het Frans staat hieronder in FR, met dezelfde data-i18n-sleutel.
+   Nieuwe tekst vertalen? Voeg dezelfde sleutel toe aan FR.
+   ============================================================ */
+var FR = {
+  "meta.title":"LEAD AMP — la publicité digitale qui apporte plus de demandes qualifiées aux entreprises de construction",
+  "meta.desc":"LEAD AMP booste votre entreprise de construction avec des publicités Meta et Google : un flux de demandes exclusives et qualifiées de votre région. Résiliable chaque mois, sans frais de démarrage.",
+
+  "nav.agenda":"Plus de demandes","nav.gids":"À propos","nav.aanpak":"Approche","nav.plan":"Le plan","nav.contact":"Contact",
+
+  "cta.wa":"Envoyer un WhatsApp","cta.wa_us":"Envoyer un WhatsApp","cta.wa_short":"WhatsApp","cta.call":"Ou appelez-nous","cta.call_short":"Appeler","cta.pilot":"Demander le pilote",
+
+  "hero.sector":"100% dédié au secteur de la construction",
+  "hero.lock":"<b>Celui qui remplit votre formulaire s'adresse à vous.</b> Cette demande va vers vous et vers personne d'autre. Nous ne revendons ni ne partageons jamais une demande à une deuxième entreprise.",
+  "hero.h1":"Recevez des demandes qualifiées <span class=\"blue\">toute l'année</span>",
+  "hero.lede":"Vous livrez du travail de qualité. La seule chose qui varie, c'est le nombre de demandes qui arrivent. Nous y mettons de la structure — un flux constant de demandes de projets de votre propre région, exclusivement pour vous.",
+  "assure.1":"100% de leads exclusifs","assure.2":"Résiliable chaque mois","assure.3":"Sans frais de démarrage",
+
+  "define.pos":"verbe — anglais",
+  "define.m1":"amplifier, agrandir, rendre plus audible. Prendre un signal qui existe déjà — et le faire entendre à ceux qui doivent l'entendre.",
+  "define.m2":"C'est ce que nous faisons avec votre entreprise. Votre savoir-faire est le signal. Nous y ajoutons de la portée, pour que les bonnes personnes vous trouvent et demandent un devis.",
+
+  "enemy.eyebrow":"L'agenda silencieux",
+  "enemy.h2":"Ce n'est pas votre travail qui est en cause.<br>C'est ce qui décide de votre agenda.",
+  "enemy.p":"Vous savez ce que vous valez. Sauf que c'est autre chose qui décide quand le téléphone sonne — et c'est là tout le problème.",
+  "enemy.c1h":"La saison décide","enemy.c1p":"Chargé en automne, silence au printemps. Votre agenda suit la météo et le marché au lieu de l'inverse.",
+  "enemy.c2h":"Le bouche-à-oreille se tarit","enemy.c2p":"Un quartier ou un donneur d'ordre remplit des mois de travail. Jusqu'à ce que ce soit fini et que le silence revienne.",
+  "enemy.c3h":"Enchérir contre quatre autres","enemy.c3p":"Sur les plateformes de devis, le client reçoit votre numéro et celui des autres. Tout se joue sur le prix, pas sur le savoir-faire.",
+  "enemy.c4h":"Les bons mois ne se répètent pas","enemy.c4p":"Un bon mois fait plaisir, mais vous ne pouvez pas dire d'où il vient — donc pas le reproduire non plus.",
+  "enemy.cta":"Ça vous parle ? Dites-nous en deux phrases ce qui se passe chez vous.",
+
+  "guide.eyebrow":"Qui se tient à vos côtés",
+  "guide.h2":"Nous connaissons ce printemps silencieux.",
+  "guide.p":"Nous avons parlé à assez d'entreprises de construction pour savoir ce qu'un mois calme fait ressentir : vous continuez à travailler, mais vous calculez. Vous restez l'artisan — nous veillons simplement à ce que les bonnes personnes vous voient.",
+  "team.slottag":"Photo ici","team.slotp":"Photo verticale de l'équipe — 4:5, min. 1000 × 1250 px",
+  "team.h3":"Qui se cache derrière les campagnes",
+  "team.p1":"<b>[Nom]</b> et <b>[Nom]</b> — nous sommes LEAD AMP et nous nous concentrons volontairement sur un seul secteur : la construction. Pas parce que c'est le marché le plus facile, mais parce que nous savons désormais à quoi ressemble un devis de construction et pourquoi une demande débouche sur un chantier et une autre non.",
+  "team.p2":"[Court paragraphe sur votre parcours et pourquoi vous avez commencé avec les entreprises de construction. Un détail concret vaut mieux que trois belles phrases.]",
+
+  "promise.eyebrow":"Là où ça coince le plus souvent",
+  "promise.h2":"Deux choses déterminent si la publicité fonctionne.",
+  "promise.p":"Chez ceux qui nous appellent, ça coince presque toujours sur les deux mêmes points. C'est là-dessus que nous avons bâti notre approche.",
+  "promise.exclh":"Une demande, une entreprise",
+  "promise.exclp":"Celui qui clique sur votre publicité et remplit votre formulaire <b>s'adresse à vous</b>. Cette demande arrive chez vous et chez personne d'autre. C'est la différence avec les comparateurs : là, quelqu'un remplit un seul formulaire et ce même numéro est revendu à cinq entrepreneurs qui l'appellent tous.",
+  "promise.exclr1":"<b>Jamais revendue.</b> Il n'existe pas de pool de leads partagé dans lequel plusieurs entreprises viennent puiser. Une demande qui arrive chez vous ne part nulle part ailleurs — ce n'est pas notre modèle.",
+  "promise.exclr2":"<b>Vous faites de la publicité sous votre propre nom.</b> Vos visuels, vos textes, votre page de demande. Les gens choisissent votre entreprise et votre travail, pas une liste de quatre devis côte à côte.",
+  "promise.exclr3":"<b>Le choix appartient au client.</b> C'est lui qui décide sur quelle publicité il clique et à qui il demande un devis. Celui qui montre le mieux son travail et rappelle le plus vite l'emporte — pas celui qui casse les prix.",
+  "promise.exclnote":"Soyons clairs : chez nous, exclusif porte sur la <b>demande</b>, pas sur le marché. Un propriétaire peut toujours contacter un deuxième entrepreneur de lui-même — il le fait déjà aujourd'hui. Ce que nous garantissons, c'est que nous ne transmettons jamais ses coordonnées à quelqu'un d'autre, et que vous les recevez immédiatement sur WhatsApp pour être le premier au téléphone.",
+  "promise.aih":"Viser plus juste qu'une publicité pour tout le monde",
+  "promise.aip":"Nous utilisons les <b>outils de ciblage IA les plus récents</b> pour placer vos publicités devant les bonnes personnes : des propriétaires et décideurs de votre région qui pensent maintenant à leur projet. Un ciblage plus précis, ce sont de meilleures demandes et moins de budget vers ceux qui n'achèteront pas.",
+
+  "pack.eyebrow":"Un pack, deux canaux — Meta pour ceux qui ne cherchent pas encore, Google pour ceux qui ont besoin de quelqu'un maintenant.",
+  "pack.metah":"Avant qu'ils ne cherchent",
+  "pack.metap":"Facebook et Instagram touchent des gens qui ne cherchent pas encore activement. Quelqu'un qui hésite depuis deux hivers sur sa rénovation voit votre travail passer et demande un devis. C'est ce qui apporte le volume.",
+  "pack.googleh":"Un problème maintenant",
+  "pack.googlep":"Celui qui tape aujourd'hui « entrepreneur près de chez moi » ou « toiture réparée » a besoin de quelqu'un maintenant. Là, nous sommes en tête. Moins de volume, la plus haute intention — ce sont les travaux urgents.",
+
+  "watch.eyebrow":"Suivi quotidien",
+  "watch.h2":"Votre campagne ne reste pas là où elle a démarré.",
+  "watch.p":"La plupart des campagnes sont lancées puis oubliées. Sur la vôtre, quelqu'un regarde chaque jour ouvré — c'est la différence entre dépenser un budget publicitaire et le faire rendre.",
+  "watch.r1h":"Regardée chaque jour","watch.r1p":"Votre campagne est suivie quotidiennement. Nous voyons tout de suite quand les demandes ralentissent ou deviennent plus chères — pas seulement au rapport mensuel, quand l'argent est déjà parti.",
+  "watch.r2h":"Ajustée immédiatement","watch.r2p":"Si une publicité ne marche pas, elle sort. Si une audience marche mieux que prévu, nous y déplaçons le budget. Vous n'attendez pas la fin du mois pour apprendre que quelque chose a mal tourné.",
+  "watch.r3h":"Ce qui marche monte","watch.r3p":"Nous regardons quelles publicités rapportent le plus de demandes au coût le plus bas, et y mettons plus de budget. Votre meilleure publicité obtient ainsi le plus d'espace.",
+  "watch.r4h":"Comparée en continu","watch.r4p":"Plusieurs versions tournent toujours en parallèle — autre visuel, autre texte, autre audience. Cette comparaison ne s'arrête jamais, car ce qui marchait le mieux le mois dernier ne l'est pas automatiquement le mois suivant.",
+  "watch.foot":"Le résultat est simple : <b>chaque euro de budget publicitaire va vers ce qui rapporte le plus de demandes à ce moment-là.</b> Pas de budget qui part des mois vers une publicité que plus personne ne clique.",
+
+  "proof.eyebrow":"Preuves",
+  "proof.h2":"Les premiers chiffres viennent d'une entreprise de la région.",
+  "proof.p":"Nous ne mettons volontairement pas de campagne d'exemple ici : chaque région, chaque métier et chaque budget donne un autre résultat. Ce qui figurera ici, ce sont de vrais chiffres avec un nom — issus du pilote en cours.",
+  "proof.mark":"Pilote en cours",
+  "proof.caseh":"Encore une place dans le pilote",
+  "proof.casep":"Une entreprise, 30 jours, au prix coûtant — vous ne payez que le budget publicitaire. En échange, nous partageons les chiffres et demandons une courte réaction vidéo si ça marche. Condition : vous avez la capacité de réellement suivre les demandes.",
+  "proof.videotag":"Réaction vidéo ici",
+  "proof.videop":"Courte réaction de la première entreprise — nom, société et commune en dessous",
+
+  "plan.eyebrow":"Le plan",
+  "plan.h2":"Trois étapes. Pour le reste, vous n'avez rien à faire.",
+  "plan.p":"Pas de démarrage qui traîne des mois, pas de jargon marketing. Vous savez d'avance exactement ce qui se passe et quand.",
+  "plan.s1h":"Rencontre de 20 minutes","plan.s1p":"Vous nous dites dans quelle région vous travaillez, quels projets vous préférez et combien vous pouvez en prendre en plus.",
+  "plan.s2h":"Campagne en ligne sous 5 jours","plan.s2p":"Nous construisons les publicités, les visuels et la page de demande à votre nom. Meta et Google démarrent ensemble.",
+  "plan.s3h":"Les premières demandes arrivent","plan.s3p":"Une fois la campagne lancée, les premières demandes ne se font en général pas attendre longtemps. Chaque demande arrive via WhatsApp ou e-mail, avec le nom, la commune et ce qu'il faut faire. Vous rappelez.",
+
+  "why.c1h":"Uniquement votre région","why.c1p":"Nous faisons de la publicité uniquement dans votre zone de travail. Pas de demandes de loin où vous ne vous déplacez pas.",
+  "why.c2h":"Montant mensuel fixe","why.c2p":"Un montant clair pour Meta et Google ensemble. Résiliable chaque mois, sans frais de démarrage.",
+  "why.c3h":"Tout via WhatsApp","why.c3p":"Un interlocuteur fixe et vos demandes dans la même application. Pas de centre d'appels ni de système de tickets.",
+
+  "stake.eyebrow":"Ce qui est en jeu",
+  "stake.h2":"Deux versions du printemps prochain.",
+  "stake.goodl":"Si ça marche","stake.goodp":"Votre agenda se remplit mieux, et durablement. Vous choisissez quels chantiers vous prenez et quel devis vous placez volontairement haut, parce que vous n'avez pas besoin de ce chantier.",
+  "stake.badl":"Si rien ne change","stake.badp":"Les mêmes mois calmes que l'an dernier. Continuer à enchérir sur le prix contre quatre autres, et attendre que ça reparte.",
+
+  "final.eyebrow":"Le choix",
+  "final.h2":"La prochaine saison ne doit pas être silencieuse.",
+  "final.p":"Envoyez un WhatsApp. En un jour, vous saurez si nous pouvons décrocher des demandes pour votre entreprise — sans engagement, sans discours commercial.",
+  "final.or":"Vous préférez appeler ou écrire ?",
+
+  "foot.about":"Des campagnes Meta et Google qui apportent aux entreprises de construction un flux constant de demandes qualifiées. 100% de leads exclusifs via le ciblage IA, montant mensuel fixe.",
+  "foot.menu":"Menu","foot.area":"Zone de travail",
+  "foot.areap":"Actifs dans toute la Belgique. Nous adaptons chaque campagne à votre propre zone de travail — d'une seule ville à plusieurs provinces.",
+  "foot.copy":"© 2026 LEAD AMP — digital advertising agency","foot.made":"Conçu pour les artisans de la construction"
+};
+
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* --- taal --- */
+  var nodes = document.querySelectorAll('[data-i18n]');
+  var NL = {}; // originele Nederlandse HTML, opgevangen bij het laden
+  nodes.forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    if(!(key in NL)) NL[key] = el.innerHTML;
+  });
+  function applyLang(lang){
+    var dict = lang === 'fr' ? FR : NL;
+    nodes.forEach(function(el){
+      var key = el.getAttribute('data-i18n');
+      var val = (key in dict) ? dict[key] : NL[key];
+      if(val == null) return;
+      var attr = el.getAttribute('data-i18n-attr');
+      if(attr){ el.setAttribute(attr, val); }
+      else { el.innerHTML = val; }
+    });
+    document.documentElement.lang = lang;
+    document.querySelectorAll('.langtog button').forEach(function(b){
+      b.classList.toggle('on', b.getAttribute('data-lang') === lang);
+    });
+    try{ localStorage.setItem('leadamp-lang', lang); }catch(e){}
+  }
+  document.querySelectorAll('.langtog button').forEach(function(b){
+    b.addEventListener('click', function(){ applyLang(b.getAttribute('data-lang')); });
+  });
+  var saved = 'nl';
+  try{ saved = localStorage.getItem('leadamp-lang') || 'nl'; }catch(e){}
+  if(saved === 'fr') applyLang('fr');
+
+  /* sticky nav */
+  var header = document.getElementById('header');
+  window.addEventListener('scroll', function(){
+    header.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  /* reveal bij scrollen */
+  var revs = document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduce){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
+    },{threshold:0.14});
+    revs.forEach(function(r){ io.observe(r); });
+  } else { revs.forEach(function(r){ r.classList.add('in'); }); }
+
+  /* balkjes in het amp·li·fy-blok */
+  var bars = document.querySelectorAll('.define .bars-mini i');
+  var heights = [40,62,54,78,70,96];
+  if(bars.length){
+    var bio = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          bars.forEach(function(b,i){ b.style.height = (reduce?heights[i]:0)+'%'; });
+          if(!reduce){ setTimeout(function(){ bars.forEach(function(b,i){ b.style.height = heights[i]+'%'; }); },80); }
+          bio.disconnect();
+        }
+      });
+    },{threshold:0.4});
+    bio.observe(document.querySelector('.define'));
+  }
+})();
+</script>
+</body>
+</html>
