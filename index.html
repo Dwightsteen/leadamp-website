@@ -301,6 +301,28 @@
   .fact .ico{width:38px;height:38px;border-radius:10px;background:var(--blue-soft);display:grid;place-items:center;margin-bottom:18px}
   .fact .ico svg{width:19px;height:19px;color:var(--blue)}
 
+  /* prijssignaal + veelgestelde vragen */
+  .pricecard{max-width:760px;padding:26px 30px;background:var(--gold-soft);border-radius:var(--r);margin-bottom:clamp(38px,5vw,56px)}
+  .pc-lbl{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
+  .pricecard p{color:var(--ink-soft);font-size:16px;line-height:1.62;max-width:56ch}
+  .pricecard b{color:var(--ink);font-weight:700}
+  .faq{max-width:760px;border-top:1px solid var(--line-soft)}
+  .faq details{border-bottom:1px solid var(--line-soft)}
+  .faq summary{
+    list-style:none;cursor:pointer;padding:22px 40px 22px 0;position:relative;
+    font-family:'Bricolage Grotesque';font-weight:600;font-size:1.12rem;letter-spacing:-.02em;
+    color:var(--ink);transition:color .2s;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary:hover{color:var(--blue)}
+  .faq summary::after{
+    content:"";position:absolute;right:8px;top:50%;width:9px;height:9px;
+    border-right:2px solid var(--muted-dim);border-bottom:2px solid var(--muted-dim);
+    transform:translateY(-70%) rotate(45deg);transition:transform .25s;
+  }
+  .faq details[open] summary::after{transform:translateY(-25%) rotate(225deg)}
+  .faq details p{color:var(--muted);font-size:16px;line-height:1.66;padding:0 30px 26px 0;max-width:60ch}
+
   /* ============================================================
      BEAT 6 — DE ONTKNOPING  +  BEAT 5 — DE OPROEP
      Twee richtingen: wat er gebeurt als het lukt, en wat er gebeurt
@@ -759,6 +781,57 @@
   </section>
 
   <!-- ============================================================
+       VEELGESTELDE VRAGEN
+       Beantwoordt de bezwaren die anders een reden zijn om niet te
+       klikken. <details>/<summary> = inklapbaar zonder JavaScript.
+       ============================================================ -->
+  <section class="block tight" id="faq">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="eyebrow" data-i18n="faq.eyebrow">Voor je het vraagt</span>
+        <h2 class="h2" data-i18n="faq.h2">Wat aannemers ons meestal eerst vragen.</h2>
+      </div>
+
+      <!-- PRIJSSIGNAAL — variant A (zonder bedrag).
+           Zodra je een anker wil tonen, vervang de tekst door:
+           NL "Vanaf €[X] per maand, alles inbegrepen."
+           FR "À partir de €[X] par mois, tout compris."
+           en vul [X] in. -->
+      <div class="pricecard reveal">
+        <div class="pc-lbl" data-i18n="price.lbl">Wat het kost</div>
+        <p data-i18n="price.p"><b>Eén vast maandbedrag voor Meta én Google samen, zonder setupkosten.</b> Het bedrag hangt af van je werkgebied en hoeveel werk je erbij kan hebben — dat stemmen we af in het kennismakingsgesprek. Maandelijks opzegbaar, dus je zit nergens aan vast.</p>
+      </div>
+
+      <div class="faq reveal">
+        <details>
+          <summary data-i18n="faq.q1">Wie bezit het advertentieaccount en de gegevens?</summary>
+          <p data-i18n="faq.a1">Jij. We werken in een advertentieaccount op naam van jouw bedrijf, en jij blijft eigenaar van het account, de campagnegegevens en alle aanvragen die eruit komen. Stopt de samenwerking, dan blijft alles staan waar het staat.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q2">Wat als het niet werkt — kan ik stoppen?</summary>
+          <p data-i18n="faq.a2">Ja, maandelijks. Geen jaarcontract, geen opzegtermijn van drie maanden. We vragen wel om het eerlijk te zeggen als iets niet loopt: negen van de tien keer is het bij te sturen, en dat is precies waarvoor we de campagne dagelijks opvolgen.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q3">Hoe snel komen de eerste aanvragen binnen?</summary>
+          <p data-i18n="faq.a3">De campagne staat binnen vijf werkdagen live — dat hebben we zelf in de hand. Wanneer de eerste aanvraag binnenkomt, hangt af van je vak, je regio en het seizoen. Meestal laat ze niet lang op zich wachten, maar we beloven je geen datum die we niet kunnen garanderen.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q4">In welke regio's werken jullie?</summary>
+          <p data-i18n="faq.a4">In heel België, in het Nederlands en het Frans. De campagne zelf loopt enkel binnen jouw eigen werkgebied — van één stad tot meerdere provincies, precies zoals jij het afbakent.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q5">Krijg ik een factuur, en is dit aftrekbaar?</summary>
+          <p data-i18n="faq.a5">Je krijgt elke maand een factuur met btw. Advertentiekosten zijn voor een bouwbedrijf een gewone beroepskost — vraag je boekhouder naar jouw situatie.</p>
+        </details>
+        <details>
+          <summary data-i18n="faq.q6">Moet ik zelf nog iets doen?</summary>
+          <p data-i18n="faq.a6">Eén ding: terugbellen. Wij bouwen de advertenties, het beeld en de aanvraagpagina, en volgen de campagne dagelijks op. Jij krijgt de aanvraag in WhatsApp met naam, gemeente en wat er moet gebeuren. Wie snel terugbelt, haalt er het meeste uit.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
        BEAT 6 — DE ONTKNOPING  en  BEAT 5 — DE OPROEP
        Personaliseer de twee kaders per klant: schrijf zijn eigen
        toekomst, in zijn eigen woorden uit het kennismakingsgesprek.
@@ -986,6 +1059,23 @@ var FR = {
   "why.c1h":"Uniquement votre région","why.c1p":"Nous faisons de la publicité uniquement dans votre zone de travail. Pas de demandes de loin où vous ne vous déplacez pas.",
   "why.c2h":"Montant mensuel fixe","why.c2p":"Un montant clair pour Meta et Google ensemble. Résiliable chaque mois, sans frais de démarrage.",
   "why.c3h":"Tout via WhatsApp","why.c3p":"Un interlocuteur fixe et vos demandes dans la même application. Pas de centre d'appels ni de système de tickets.",
+
+  "faq.eyebrow":"Avant que vous ne le demandiez",
+  "faq.h2":"Ce que les entrepreneurs nous demandent en premier.",
+  "price.lbl":"Ce que ça coûte",
+  "price.p":"<b>Un montant mensuel fixe pour Meta et Google ensemble, sans frais de démarrage.</b> Le montant dépend de votre zone de travail et du volume de travail que vous pouvez absorber — nous l'ajustons lors de la prise de contact. Résiliable chaque mois, vous n'êtes donc engagé à rien.",
+  "faq.q1":"Qui possède le compte publicitaire et les données ?",
+  "faq.a1":"Vous. Nous travaillons dans un compte publicitaire au nom de votre entreprise, et vous restez propriétaire du compte, des données de campagne et de toutes les demandes qui en découlent. Si la collaboration s'arrête, tout reste en place.",
+  "faq.q2":"Et si ça ne marche pas — puis-je arrêter ?",
+  "faq.a2":"Oui, chaque mois. Pas de contrat annuel, pas de préavis de trois mois. Nous vous demandons simplement de le dire franchement si quelque chose ne tourne pas : neuf fois sur dix c'est corrigeable, et c'est précisément pour cela que nous suivons la campagne quotidiennement.",
+  "faq.q3":"Quand arrivent les premières demandes ?",
+  "faq.a3":"La campagne est en ligne sous cinq jours ouvrés — cela, nous le maîtrisons. Le moment où arrive la première demande dépend de votre métier, de votre région et de la saison. En général elle ne se fait pas attendre, mais nous ne promettons pas une date que nous ne pouvons pas garantir.",
+  "faq.q4":"Dans quelles régions travaillez-vous ?",
+  "faq.a4":"Dans toute la Belgique, en néerlandais et en français. La campagne elle-même ne tourne que dans votre propre zone de travail — d'une seule ville à plusieurs provinces, exactement comme vous la délimitez.",
+  "faq.q5":"Est-ce que je reçois une facture, et est-ce déductible ?",
+  "faq.a5":"Vous recevez chaque mois une facture avec TVA. Les frais publicitaires sont une charge professionnelle ordinaire pour une entreprise de construction — demandez à votre comptable ce qu'il en est dans votre situation.",
+  "faq.q6":"Dois-je encore faire quelque chose moi-même ?",
+  "faq.a6":"Une seule chose : rappeler. Nous construisons les publicités, les visuels et la page de demande, et suivons la campagne chaque jour. Vous recevez la demande sur WhatsApp avec le nom, la commune et ce qu'il faut faire. Celui qui rappelle vite en tire le plus.",
 
   "stake.eyebrow":"Ce qui est en jeu",
   "stake.h2":"Deux versions du printemps prochain.",
