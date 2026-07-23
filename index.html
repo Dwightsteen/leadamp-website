@@ -5,6 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title data-i18n="meta.title">LEAD AMP — digital advertising die bouwbedrijven meer warme aanvragen oplevert</title>
 <meta name="description" data-i18n-attr="content" data-i18n="meta.desc" content="LEAD AMP versterkt jouw bouwbedrijf met Meta- en Google-advertenties: een stroom exclusieve, warme aanvragen uit jouw eigen regio. Maandelijks opzegbaar, geen setupkosten.">
+<!-- ============================================================
+     DELEN OP SOCIALE MEDIA
+     NOG IN TE VULLEN: og:url en og:image.
+       og:url    -> het echte adres, bv. https://leadamp.be/
+       og:image  -> deelafbeelding, 1200 × 630 px, absolute URL
+                    (relatieve paden werken niet bij delen).
+                    Zet er het logo op plus één regel tekst; geen
+                    schermafbeelding van de site zelf.
+     Zolang og:image ontbreekt, toont WhatsApp/Facebook enkel tekst.
+     ============================================================ -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="nl_BE">
+<meta property="og:site_name" content="LEAD AMP">
+<meta property="og:url" content="https://leadamp.be/">
+<meta property="og:title" data-i18n-attr="content" data-i18n="meta.title" content="LEAD AMP — digital advertising die bouwbedrijven meer warme aanvragen oplevert">
+<meta property="og:description" data-i18n-attr="content" data-i18n="meta.desc" content="LEAD AMP versterkt jouw bouwbedrijf met Meta- en Google-advertenties: een stroom exclusieve, warme aanvragen uit jouw eigen regio. Maandelijks opzegbaar, geen setupkosten.">
+<meta property="og:image" content="https://leadamp.be/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FCFBF9">
+
 <!-- favicon: hetzelfde logo, als SVG in de pagina zelf -->
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='-2 -2 38 34'%3E%3Crect x='1' y='21' width='5' height='8' rx='2.5' fill='%230F1B3D'/%3E%3Crect x='7.5' y='15' width='5' height='14' rx='2.5' fill='%230F1B3D'/%3E%3Crect x='14' y='9' width='5' height='20' rx='2.5' fill='%230F1B3D'/%3E%3Crect x='20.5' y='2' width='5' height='27' rx='2.5' fill='%23A9761F'/%3E%3Cpath d='M28.5 9a11 11 0 0 1 0 16' fill='none' stroke='%23A9761F' stroke-width='2' stroke-linecap='round' opacity='0.45'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -616,7 +636,8 @@
 
        FOTO VAN HET TEAM — INVULPLEK
        Vervang het <div class="photo-slot slot"> blok door:
-         <div class="photo-slot"><img src="foto-team.jpg" alt="..."></div>
+         <div class="photo-slot"><img src="foto-team.jpg"
+              alt="[Naam] en [Naam] van LEAD AMP op een werf"></div>
        Liefst een echte foto op locatie (op een werf, bij de wagen,
        of gewoon met z'n tweeën) — geen stockfoto, geen studioportret.
        Staand, 4:5, minimaal 1000 × 1250 px.
@@ -1329,5 +1350,38 @@ var WA_TEKST = {
   }
 })();
 </script>
+<!-- ============================================================
+     TRACKING & COOKIETOESTEMMING — STAAT UIT
+     Volgorde is wettelijk bindend (GDPR + ePrivacy): eerst
+     toestemming, dan pas de pixel laden. Zet dit dus NIET aan
+     zonder werkende cookiebanner en privacyverklaring.
+
+     STAP 1 — cookiebanner
+       Kies een oplossing (Cookiebot, Cookieyes, Iubenda of eigen
+       banner) en plak hier het script. Vereisten: weigeren moet
+       even makkelijk zijn als aanvaarden, en de keuze moet
+       bewaard worden.
+
+     STAP 2 — Meta Pixel (pas laden ná toestemming)
+       <script>
+       !function(f,b,e,v,n,t,s){...}(window,document,'script',
+       'https://connect.facebook.net/en_US/fbevents.js');
+       fbq('init','[PIXEL-ID]'); fbq('track','PageView');
+       </script>
+
+     STAP 3 — Google-tag (pas laden ná toestemming)
+       <script async src="https://www.googletagmanager.com/gtag/js?id=[GA-ID]"></script>
+
+     STAP 4 — conversies meten
+       WhatsApp-klik en formulierverzending als conversie-event
+       doorgeven, anders kan de campagne niet optimaliseren:
+         document.querySelectorAll('a[href*="wa.me"]').forEach(function(a){
+           a.addEventListener('click', function(){
+             if (window.fbq) fbq('track','Contact');
+             if (window.gtag) gtag('event','contact',{method:'whatsapp'});
+           });
+         });
+     ============================================================ -->
+
 </body>
 </html>
