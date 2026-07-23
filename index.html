@@ -323,6 +323,25 @@
   .final h2{margin-bottom:22px}
   .final p{color:var(--muted);font-size:1.14rem;max-width:46ch;margin:0 auto 40px}
   .final .callnum{font-family:'JetBrains Mono';font-size:14px;color:var(--muted);margin-top:26px}
+
+  /* aanvraagformulier — tweede kanaal naast WhatsApp */
+  .formblock{max-width:720px;margin:clamp(44px,6vw,72px) auto 0;padding-top:clamp(40px,5vw,60px);border-top:1px solid var(--line-soft)}
+  .form-head{text-align:center;margin-bottom:32px}
+  .form-head h3{font-size:1.35rem;margin-bottom:10px}
+  .form-head p{color:var(--muted);font-size:16px}
+  .leadform{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .ff{display:flex;flex-direction:column;gap:8px}
+  .ff-wide{grid-column:1 / -1}
+  .ff label{font-family:'JetBrains Mono';font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-dim)}
+  .ff input,.ff textarea{
+    font-family:'Manrope';font-size:16px;color:var(--ink);background:#fff;
+    border:1px solid var(--line);border-radius:12px;padding:14px 16px;width:100%;
+    transition:border-color .2s,box-shadow .2s;resize:vertical;
+  }
+  .ff input:focus,.ff textarea:focus{outline:none;border-color:var(--blue);box-shadow:0 0 0 3px var(--blue-soft)}
+  .ff button[disabled]{opacity:.45;cursor:not-allowed}
+  .form-note{display:block;margin-top:12px;font-size:13.5px;color:var(--muted-dim)}
+  @media(max-width:680px){.leadform{grid-template-columns:1fr}}
   .final .callnum a{color:var(--ink);border-bottom:1px solid var(--line)}
 
   /* ---------- footer ---------- */
@@ -777,6 +796,50 @@
         <p class="cta-note" data-i18n="cta.responsetime">Antwoord binnen 2 uur tijdens de werkuren.</p>
         <div class="callnum"><span data-i18n="final.or">Liever bellen of mailen?</span> <a href="tel:+32470123456">+32 470 12 34 56</a> · <a href="mailto:hallo@leadamp.be">hallo@leadamp.be</a></div>
       </div>
+
+      <!-- ============================================================
+           AANVRAAGFORMULIER — TWEEDE KANAAL
+           NOG TE KOPPELEN: dit formulier verstuurt op dit moment niets.
+           Kies één van deze drie en vervang action + method:
+             1. Formspree   action="https://formspree.io/f/XXXXXXX" method="post"
+             2. Eigen endpoint (PHP/serverless) die naar hallo@leadamp.be mailt
+             3. Netlify Forms: voeg netlify + name="contact" toe aan het form
+           Zolang er geen action staat, blijft het formulier uitgeschakeld:
+           de knop is niet klikbaar en er is geen valse indruk van verzending.
+           Vergeet niet: na koppeling het GDPR-vinkje bewaren bij de aanvraag.
+           ============================================================ -->
+      <div class="formblock reveal">
+        <div class="form-head">
+          <h3 data-i18n="form.h3">Liever geen WhatsApp?</h3>
+          <p data-i18n="form.p">Laat je gegevens achter, dan bellen we jou. Vier velden, klaar in een minuut.</p>
+        </div>
+        <form class="leadform" novalidate data-nobackend>
+          <div class="ff">
+            <label for="f-naam" data-i18n="form.naam">Je naam</label>
+            <input id="f-naam" name="naam" type="text" autocomplete="name" required>
+          </div>
+          <div class="ff">
+            <label for="f-zaak" data-i18n="form.zaak">Bedrijf</label>
+            <input id="f-zaak" name="zaak" type="text" autocomplete="organization" required>
+          </div>
+          <div class="ff">
+            <label for="f-gemeente" data-i18n="form.gemeente">Gemeente</label>
+            <input id="f-gemeente" name="gemeente" type="text" autocomplete="address-level2" required>
+          </div>
+          <div class="ff">
+            <label for="f-tel" data-i18n="form.tel">Telefoon</label>
+            <input id="f-tel" name="telefoon" type="tel" autocomplete="tel" required>
+          </div>
+          <div class="ff ff-wide">
+            <label for="f-doel" data-i18n="form.doel">Wat wil je bereiken?</label>
+            <textarea id="f-doel" name="doel" rows="3"></textarea>
+          </div>
+          <div class="ff ff-wide">
+            <button type="submit" class="btn btn-ghost" disabled data-i18n="form.verzend">Verstuur aanvraag</button>
+            <span class="form-note" data-i18n="form.note">Nog niet actief — gebruik zolang WhatsApp of bel ons.</span>
+          </div>
+        </form>
+      </div>
     </div>
   </section>
 </main>
@@ -933,6 +996,13 @@ var FR = {
   "final.h2":"La prochaine saison ne doit pas être silencieuse.",
   "final.p":"Envoyez un WhatsApp. En un jour, vous saurez si nous pouvons décrocher des demandes pour votre entreprise — sans engagement, sans discours commercial.",
   "final.or":"Vous préférez appeler ou écrire ?",
+
+  "form.h3":"Vous préférez éviter WhatsApp ?",
+  "form.p":"Laissez vos coordonnées, nous vous rappelons. Quatre champs, une minute.",
+  "form.naam":"Votre nom","form.zaak":"Entreprise","form.gemeente":"Commune","form.tel":"Téléphone",
+  "form.doel":"Que souhaitez-vous atteindre ?",
+  "form.verzend":"Envoyer la demande",
+  "form.note":"Pas encore actif — utilisez WhatsApp ou appelez-nous en attendant.",
 
   "foot.about":"Des campagnes Meta et Google qui apportent aux entreprises de construction un flux constant de demandes qualifiées. Chaque demande exclusivement pour une seule entreprise, à un montant mensuel fixe.",
   "foot.menu":"Menu","foot.area":"Zone de travail",
