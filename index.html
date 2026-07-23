@@ -160,6 +160,12 @@
      Hij moet zichzelf hierin herkennen voor hij weet wat wij doen.
      ============================================================ */
   .hero{padding:clamp(34px,5vw,72px) 0 clamp(56px,8vw,110px)}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(36px,5vw,72px);align-items:center}
+  .hero-shot{border-radius:var(--r);aspect-ratio:4/5;overflow:hidden;display:grid;place-items:center;text-align:center;padding:26px}
+  .hero-shot img{width:100%;height:100%;object-fit:cover;border-radius:var(--r)}
+  .hero-shot .ph-ico{width:40px;height:40px;color:var(--muted-dim);margin:0 auto 16px}
+  .hero-shot p{color:var(--muted-dim);font-size:13px;font-family:'JetBrains Mono';line-height:1.5;max-width:26ch}
+  @media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero-shot{aspect-ratio:3/2;max-width:520px}}
   /* sectorregel: hoger op de pagina en groter dan een gewone eyebrow */
   .hero-sector{font-size:15px;letter-spacing:.16em;font-weight:700;margin-bottom:30px}
   .hero-sector::before{width:32px}
@@ -284,6 +290,12 @@
   .video-slot{border-radius:var(--r);aspect-ratio:16/10;display:grid;place-items:center;text-align:center;padding:26px}
   .video-slot .ph-ico{width:40px;height:40px;color:var(--muted-dim);margin:0 auto 14px}
   .video-slot p{color:var(--muted-dim);font-size:13px;font-family:'JetBrains Mono';line-height:1.5;max-width:30ch}
+  .proof-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
+  .proof-item{border-radius:var(--r);padding:32px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:210px}
+  .proof-item .ph-ico{width:36px;height:36px;color:var(--muted-dim);margin-bottom:16px}
+  .proof-item p{color:var(--muted-dim);font-size:12.5px;font-family:'JetBrains Mono';line-height:1.55;max-width:28ch}
+  .proof-shot{border-radius:var(--r);border:1px solid var(--line)}
+  @media(max-width:860px){.proof-slots{grid-template-columns:1fr}}
 
   /* ============================================================
      BEAT 4 — HET PLAN
@@ -476,7 +488,8 @@
        BEAT 1 — DE HELD
        ============================================================ -->
   <section class="hero">
-    <div class="wrap">
+    <div class="wrap hero-grid">
+     <div class="hero-copy">
       <!-- sectorfocus: het eerste wat je leest, boven de titel -->
       <span class="eyebrow hero-sector" data-i18n="hero.sector">100% gericht op de bouwsector</span>
       <h1 class="display" data-i18n="hero.h1">Ontvang warme aanvragen <span class="blue">het hele jaar door</span></h1>
@@ -498,6 +511,34 @@
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="assure.1">Elke aanvraag exclusief van jou</span></span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="assure.2">Maandelijks opzegbaar</span></span>
         <span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="assure.3">Geen setupkosten</span></span>
+      </div>
+     </div>
+
+      <!-- ============================================================
+           BEELD BOVEN DE VOUW — INVULPLEK
+           Kies één van twee. Optie A is de sterkste zodra je de foto
+           hebt: mensen vertrouwen gezichten meer dan schermen.
+
+           OPTIE A — de echte teamfoto (aanbevolen)
+             <div class="hero-shot"><img src="foto-team.jpg"
+                  alt="[Naam] en [Naam] van LEAD AMP"></div>
+             Staand 4:5, min. 1000 × 1250 px, op locatie gemaakt.
+             Gebruik dezelfde foto niet ook in de gids-sectie — kies
+             dáár een tweede opname uit dezelfde reeks.
+
+           OPTIE B — telefoon met binnenkomende aanvragen
+             <div class="hero-shot"><img src="mockup-whatsapp.png"
+                  alt="Binnenkomende aanvragen in WhatsApp"></div>
+             Toont het mechanisme. Persoonsgegevens onherkenbaar maken.
+
+           Vervang het blok hieronder volledig door je keuze.
+           ============================================================ -->
+      <div class="hero-shot slot reveal">
+        <div>
+          <svg class="ph-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><circle cx="9" cy="10" r="2.5"/><path d="M2 17l5.5-5 4 3.5L15.5 12l6.5 6"/></svg>
+          <div class="slot-tag" data-i18n="hero.shottag">Beeld komt hier</div>
+          <p data-i18n="hero.shotp">Teamfoto (staand 4:5) of telefoon met binnenkomende aanvragen</p>
+        </div>
       </div>
     </div>
   </section>
@@ -727,6 +768,56 @@
             <div class="slot-tag" data-i18n="proof.videotag">Videoreactie komt hier</div>
             <p data-i18n="proof.videop">Korte reactie van het eerste bouwbedrijf — naam, zaak en gemeente eronder</p>
           </div>
+        </div>
+      </div>
+
+      <!-- ============================================================
+           BEWIJSPLEKKEN — NOG IN TE VULLEN
+           Vul deze in de volgorde waarin je het materiaal krijgt. Elke
+           plek vervangt zichzelf: haal de .slot-klasse weg en zet er de
+           echte inhoud in. Verzin hier NOOIT iets — een verzonnen cijfer
+           kost je meer geloofwaardigheid dan een lege plek.
+           ============================================================ -->
+      <div class="proof-slots">
+
+        <!-- 1. SCHERMAFBEELDING VAN BINNENKOMENDE AANVRAGEN
+             Bewijst dat het mechanisme werkt, ook zonder cijfers.
+             Maak een schermafbeelding van je WhatsApp met een paar
+             binnengekomen aanvragen. Maak namen, nummers en adressen
+             ONHERKENBAAR (zwarte balk of blur) — dat is geen optie
+             maar een GDPR-verplichting.
+             Vervang dit blok door:
+               <img src="bewijs-whatsapp.png" alt="Binnenkomende
+                    aanvragen in WhatsApp" class="proof-shot">
+             Formaat: staand of vierkant, min. 800 px breed. -->
+        <div class="proof-item slot reveal">
+          <svg class="ph-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+          <div class="slot-tag" data-i18n="proof.shottag">Schermafbeelding komt hier</div>
+          <p data-i18n="proof.shotp">Binnenkomende aanvragen in WhatsApp — persoonsgegevens onherkenbaar gemaakt</p>
+        </div>
+
+        <!-- 2. EERSTE ECHTE CIJFERS, MÉT BEDRIJFSNAAM
+             Zonder naam is een cijfer een bewering. Vraag bij de pilot
+             uitdrukkelijk toestemming om naam en gemeente te vermelden.
+             Vervang dit blok door drie tegels: aantal aanvragen,
+             kost per aanvraag, periode — plus "Bij [Bedrijf] uit
+             [Gemeente], [maand jaartal]". -->
+        <div class="proof-item slot reveal">
+          <svg class="ph-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <div class="slot-tag" data-i18n="proof.numtag">Cijfers komen hier</div>
+          <p data-i18n="proof.nump">Echte resultaten van de pilot, met bedrijfsnaam, gemeente en periode erbij</p>
+        </div>
+
+        <!-- 3. LOGOSTRIP VAN KLANTEN
+             Zolang je er geen hebt: laat dit blok staan of haal het
+             weg. Zet er NOOIT logo's in van bedrijven die geen klant
+             zijn — ook niet "ter illustratie".
+             Vervang later door een rij <img> met klantlogo's,
+             grijswaarden, max. 120 px breed per stuk. -->
+        <div class="proof-item slot reveal">
+          <svg class="ph-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
+          <div class="slot-tag" data-i18n="proof.logotag">Klantenlogo's komen hier</div>
+          <p data-i18n="proof.logop">Logo's van bouwbedrijven waarvoor je campagnes draait — pas plaatsen met hun toestemming</p>
         </div>
       </div>
     </div>
@@ -1036,6 +1127,7 @@ var FR = {
   "hero.lock":"<b>Celui qui remplit votre formulaire s'adresse à vous.</b> Cette demande va vers vous et vers personne d'autre. Nous ne revendons ni ne partageons jamais une demande à une deuxième entreprise.",
   "hero.h1":"Recevez des demandes qualifiées <span class=\"blue\">toute l'année</span>",
   "promise.aimark":"Les bonnes personnes",
+  "hero.shottag":"Image ici","hero.shotp":"Photo d'équipe (verticale 4:5) ou téléphone avec demandes entrantes",
   "hero.lede":"Vous livrez du travail de qualité. La seule chose qui varie, c'est le nombre de demandes qui arrivent. Nous y mettons de la structure — un flux constant de demandes de projets de votre propre région, exclusivement pour vous.",
   "assure.1":"Chaque demande exclusivement à vous","assure.2":"Résiliable chaque mois","assure.3":"Sans frais de démarrage",
 
@@ -1093,6 +1185,12 @@ var FR = {
   "proof.mark":"Pilote en cours",
   "proof.caseh":"Encore une place dans le pilote",
   "proof.casep":"Une entreprise, 30 jours, au prix coûtant — vous ne payez que le budget publicitaire. En échange, nous partageons les chiffres et demandons une courte réaction vidéo si ça marche. Condition : vous avez la capacité de réellement suivre les demandes.",
+  "proof.shottag":"Capture d'écran ici",
+  "proof.shotp":"Demandes entrantes dans WhatsApp — données personnelles rendues illisibles",
+  "proof.numtag":"Chiffres ici",
+  "proof.nump":"Résultats réels du pilote, avec nom d'entreprise, commune et période",
+  "proof.logotag":"Logos clients ici",
+  "proof.logop":"Logos des entreprises pour lesquelles vous menez des campagnes — uniquement avec leur accord",
   "proof.videotag":"Réaction vidéo ici",
   "proof.videop":"Courte réaction de la première entreprise — nom, société et commune en dessous",
 
