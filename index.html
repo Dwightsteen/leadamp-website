@@ -241,7 +241,7 @@
      de huisstijl gereserveerd voor WhatsApp en doet hier dus niet
      mee. Die twee kleuren komen verderop terug op de secties die
      eronder vallen
-     (.halfmark, en de nummers in #opvolging / #na-de-aanvraag),
+     (.halfmark, en de nummers in #na-de-aanvraag),
      zodat hij bij elke sectie ziet bij welke helft ze hoort.
 
      De donkere band is er om het blok te dragen: de twee kaarten
@@ -309,7 +309,6 @@
   .halfmark:hover{opacity:.88}
   /* dezelfde kleurcode op de genummerde rijen van beide helften.
      Meetgeel is als letterkleur te licht, dus de donkere variant. */
-  #opvolging .watch .row .k{color:var(--blue)}
   #na-de-aanvraag .watch .row .k{color:var(--gold)}
 
   @media(max-width:860px){
@@ -317,26 +316,6 @@
     .half{border-right:0;border-bottom:1px solid var(--line)}
     .half:last-child{border-bottom:0}
   }
-
-  /* ---------- amp·li·fy ---------- */
-  .define{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:var(--paper-warm)}
-  .define .wrap{padding:clamp(52px,7vw,88px) 32px;display:grid;grid-template-columns:auto 1fr;gap:clamp(34px,7vw,84px);align-items:center}
-  .define .w{font-family:var(--disp);font-weight:800;font-stretch:110%;font-size:clamp(1.9rem,4vw,3rem);letter-spacing:-.035em;line-height:1;color:var(--ink)}
-  .define .ipa{font-family:var(--mono);font-size:13px;color:var(--gold);margin-top:14px}
-  .define .pos{font-family:var(--mono);font-size:12px;color:var(--muted-dim);margin-top:5px}
-  .define .bars-mini{display:flex;align-items:flex-end;gap:5px;height:38px;margin-top:26px}
-  .define .bars-mini i{width:6px;background:linear-gradient(180deg,var(--blue),rgba(30,79,216,.14));border-radius:0;display:block;height:0;transition:height .7s cubic-bezier(.2,.8,.2,1)}
-  .define .bars-mini i:last-child{background:linear-gradient(180deg,var(--meet),rgba(245,183,44,.16))}
-  .define .meaning{border-left:1px solid var(--line);padding-left:clamp(28px,5vw,60px)}
-  .define .m1{font-size:1.04rem;color:var(--muted);line-height:1.6;margin-bottom:20px;max-width:52ch}
-  .define .m2{font-family:var(--disp);font-weight:600;font-size:clamp(1.16rem,2.2vw,1.7rem);line-height:1.32;letter-spacing:-.02em;color:var(--ink);max-width:34ch}
-
-  /* ---------- marquee sectoren ---------- */
-  .marquee{border-bottom:1px solid var(--line-soft);padding:22px 0;overflow:hidden;position:relative}
-  .marquee .track{display:flex;width:max-content;animation:scroll 46s linear infinite}
-  .marquee span{font-family:var(--mono);font-size:13px;color:var(--muted-dim);letter-spacing:.03em;padding:0 24px;display:flex;align-items:center;gap:24px;white-space:nowrap}
-  .marquee span::after{content:"■";color:var(--meet);font-size:6px;opacity:.75}
-  @keyframes scroll{to{transform:translateX(-50%)}}
 
   /* ============================================================
      BEAT 2 — DE VIJAND
@@ -347,11 +326,15 @@
      Regel: de vijand blijft extern. Nooit "je marketing is slecht" —
      dan maak je hem de schuldige en haakt hij af.
      ============================================================ */
-  .enemy-list{display:grid;grid-template-columns:1fr 1fr;gap:0 clamp(40px,7vw,92px)}
-  .enemy-item{padding:38px 0;border-top:1px solid var(--line-soft)}
-  .enemy-item .k{font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;color:var(--gold);margin-bottom:16px;font-variant-numeric:tabular-nums}
-  .enemy-item h3{font-size:1.3rem;margin-bottom:12px}
-  .enemy-item p{color:var(--muted);font-size:16px;line-height:1.6;max-width:42ch}
+  /* Geen kaarten en geen nummers: vier korte regels onder elkaar met
+     een dunne lijn ertussen. Zo blijft er op de hele pagina maar één
+     rij genummerde kaarten over — die in #na-de-aanvraag — en die
+     valt dan ook op. */
+  .enemy-list{max-width:820px}
+  .enemy-item{padding:19px 0;border-top:1px solid var(--line-soft);display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+  .enemy-item:last-child{border-bottom:1px solid var(--line-soft)}
+  .enemy-item h3{font-size:1.06rem;line-height:1.4;white-space:nowrap}
+  .enemy-item p{color:var(--muted);font-size:16px;line-height:1.5;flex:1 1 22ch}
 
   /* ---------- herhaalde, rustige CTA-regel ---------- */
   .cta-line{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:clamp(46px,6vw,76px);padding-top:34px;border-top:1px solid var(--line-soft)}
@@ -389,11 +372,6 @@
   .promise h3{font-size:1.32rem;margin-bottom:14px}
   .promise p{color:var(--muted);font-size:16px;line-height:1.66;max-width:44ch}
   .promise p b{color:var(--ink);font-weight:600}
-  .excl-rules{list-style:none;display:flex;flex-direction:column;gap:15px;margin-top:24px;max-width:46ch}
-  .excl-rules li{display:flex;gap:12px;color:var(--muted);font-size:15.5px;line-height:1.55}
-  .excl-rules svg{width:18px;height:18px;flex:none;color:var(--gold);margin-top:3px}
-  .excl-rules b{color:var(--ink);font-weight:600}
-  .excl-note{margin-top:24px;padding-top:20px;border-top:1px solid var(--line-soft);font-size:15px;color:var(--muted-dim);line-height:1.6;max-width:46ch}
 
   /* twee kanalen */
   .channels{display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,6vw,80px)}
@@ -416,25 +394,28 @@
   .cs-mark{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
   .case-slot h3{font-size:1.3rem;margin-bottom:14px}
   .case-slot p{color:var(--muted);font-size:16px;line-height:1.66;margin-bottom:28px;max-width:48ch}
-  .video-slot{border-radius:var(--r);aspect-ratio:16/10;display:grid;place-items:center;text-align:center;padding:26px}
-  .video-slot .ph-ico{width:40px;height:40px;color:var(--muted-dim);margin:0 auto 14px}
-  .video-slot p{color:var(--muted-dim);font-size:13px;font-family:var(--mono);line-height:1.5;max-width:30ch}
-  .proof-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:22px}
-  .proof-item{border-radius:var(--r);padding:32px 24px;text-align:center;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:210px}
-  .proof-item .ph-ico{width:36px;height:36px;color:var(--muted-dim);margin-bottom:16px}
-  .proof-item p{color:var(--muted-dim);font-size:12.5px;font-family:var(--mono);line-height:1.55;max-width:28ch}
+  /* de enige bewijsplek die nog openstaat */
+  .shot-slot{border-radius:var(--r);aspect-ratio:16/10;display:grid;place-items:center;text-align:center;padding:26px}
+  .shot-slot .ph-ico{width:40px;height:40px;color:var(--muted-dim);margin:0 auto 14px}
+  .shot-slot p{color:var(--muted-dim);font-size:13px;font-family:var(--mono);line-height:1.5;max-width:30ch}
   .proof-shot{border-radius:var(--r);border:1px solid var(--line)}
-  @media(max-width:860px){.proof-slots{grid-template-columns:1fr}}
 
   /* ============================================================
      BEAT 4 — HET PLAN
      Drie stappen, niet meer. Mensen kopen geen resultaat waarvan
      ze het pad niet zien.
      ============================================================ */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(30px,5vw,64px)}
-  .step .num{font-family:var(--mono);font-size:12px;font-weight:600;color:var(--gold);letter-spacing:.16em;margin-bottom:20px;display:flex;align-items:center;gap:14px;font-variant-numeric:tabular-nums}
-  .step .num::after{content:"";flex:1;height:1px;background:var(--line)}
-  .step h3{font-size:1.24rem;margin-bottom:12px}
+  /* Tijdlijn in plaats van kaarten: één doorlopende lijn met de drie
+     nummers erop. Dit is de enige plek waar de volgorde in de tijd
+     zit, dus de nummers blijven. */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(30px,5vw,64px);border-top:1px solid var(--line)}
+  .step{position:relative;padding-top:30px}
+  .step .num{
+    position:absolute;top:-8px;left:0;background:var(--paper);padding-right:14px;line-height:1;
+    font-family:var(--mono);font-size:12px;font-weight:600;color:var(--gold);
+    letter-spacing:.16em;font-variant-numeric:tabular-nums;
+  }
+  .step h3{font-size:1.18rem;margin-bottom:12px}
   .step p{color:var(--muted);font-size:15.8px;line-height:1.62}
 
   /* praktisch */
@@ -445,7 +426,7 @@
   .fact .ico svg{width:19px;height:19px;color:var(--blue)}
 
   /* prijssignaal + veelgestelde vragen */
-  .pricesplit{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:900px}
+  .pricesplit{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:900px;margin-bottom:clamp(38px,5vw,56px)}
   .pricecard{padding:30px 32px;background:var(--gold-soft);border-radius:var(--r)}
   .pricecard.alt{background:var(--blue-soft)}
   .pc-lbl{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:14px;font-variant-numeric:tabular-nums}
@@ -453,7 +434,6 @@
   .pricecard h3{font-size:1.18rem;margin-bottom:12px}
   .pricecard p{color:var(--ink-soft);font-size:15.5px;line-height:1.64;font-variant-numeric:tabular-nums}
   .pricecard b{color:var(--ink);font-weight:600}
-  .price-note{max-width:900px;margin:20px 0 clamp(38px,5vw,56px);color:var(--muted);font-size:15.5px;line-height:1.6}
   @media(max-width:860px){.pricesplit{grid-template-columns:1fr}}
   .faq{max-width:760px;border-top:1px solid var(--line-soft)}
   .faq details{border-bottom:1px solid var(--line-soft)}
@@ -539,9 +519,8 @@
   .reveal.in{opacity:1;transform:none}
 
   @media(max-width:960px){
-    .promise,.channels,.enemy-list{grid-template-columns:1fr}
-    .enemy-list{gap:0}
-    .steps,.facts{grid-template-columns:1fr 1fr}
+    .promise,.channels{grid-template-columns:1fr}
+    .facts{grid-template-columns:1fr 1fr}
     .proof-grid{grid-template-columns:1fr}
     .guide-intro{grid-template-columns:1fr}
     .photo-slot{aspect-ratio:3/2}
@@ -571,11 +550,13 @@
        vandaar nowrap plus deze kleinere korps */
     header .brand-tag{font-size:8.8px;margin-top:6px}
     header .navcta .btn-wa{display:none}
-    .steps,.facts{grid-template-columns:1fr}
+    .facts{grid-template-columns:1fr}
+    /* op één kolom loopt de tijdlijn niet meer door: elke stap krijgt
+       zijn eigen lijntje */
+    .steps{grid-template-columns:1fr;border-top:0;gap:0}
+    .step{border-top:1px solid var(--line);padding-top:30px;padding-bottom:26px}
     .mobar{display:flex}
     .hero-cta .btn{flex:1}
-    .define .wrap{grid-template-columns:1fr;gap:26px}
-    .define .meaning{border-left:none;padding-left:0;border-top:1px solid var(--line);padding-top:24px}
   }
   @media(prefers-reduced-motion:reduce){
     *{animation-duration:.001ms!important;transition:none!important}
@@ -748,30 +729,6 @@
     </div>
   </section>
 
-  <!-- amp·li·fy — wat de naam betekent -->
-  <section class="define" style="margin-top:clamp(56px,7vw,96px)">
-    <div class="wrap">
-      <div class="word">
-        <div class="w">amp·li·fy</div>
-        <div class="ipa">/ˈæm.plɪ.faɪ/</div>
-        <div class="pos" data-i18n="define.pos">werkwoord — Engels</div>
-        <div class="bars-mini" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
-      </div>
-      <div class="meaning">
-        <p class="m1" data-i18n="define.m1">versterken, vergroten, luider maken. Een signaal nemen dat er al is — en het hoorbaar maken voor wie het moet horen.</p>
-        <p class="m2" data-i18n="define.m2">Dat is wat wij met jouw bouwbedrijf doen. Je vakwerk is het signaal. Wij zetten er bereik op, zodat de juiste mensen je vinden en een offerte vragen.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- de vakken waar we voor werken -->
-  <div class="marquee" aria-hidden="true">
-    <div class="track">
-      <span>Dakwerken</span><span>Renovatie</span><span>Aannemers</span><span>Schrijnwerk</span><span>Elektriciteit</span><span>Sanitair &amp; verwarming</span><span>Isolatie</span><span>Ramen &amp; deuren</span><span>Zwembadbouw</span><span>Gevelwerken</span><span>Tuinaanleg</span><span>Betonwerken</span>
-      <span>Dakwerken</span><span>Renovatie</span><span>Aannemers</span><span>Schrijnwerk</span><span>Elektriciteit</span><span>Sanitair &amp; verwarming</span><span>Isolatie</span><span>Ramen &amp; deuren</span><span>Zwembadbouw</span><span>Gevelwerken</span><span>Tuinaanleg</span><span>Betonwerken</span>
-    </div>
-  </div>
-
   <!-- ============================================================
        BEAT 2 — DE VIJAND
        Personaliseer deze vier per klant. Zie de comment in de CSS.
@@ -786,24 +743,20 @@
 
       <div class="enemy-list">
         <div class="enemy-item reveal">
-          <div class="k">01</div>
           <h3 data-i18n="enemy.c1h">Het seizoen beslist</h3>
-          <p data-i18n="enemy.c1p">Druk in het najaar, stilte in het voorjaar. Je agenda volgt het weer en de markt in plaats van andersom.</p>
+          <p data-i18n="enemy.c1p">Druk in het najaar, stil in het voorjaar. Je agenda volgt het weer in plaats van andersom.</p>
         </div>
         <div class="enemy-item reveal">
-          <div class="k">02</div>
           <h3 data-i18n="enemy.c2h">Mond-tot-mond droogt op</h3>
           <p data-i18n="enemy.c2p">Eén wijk of één opdrachtgever levert maanden werk. Tot dat klaar is en het opnieuw stil wordt.</p>
         </div>
         <div class="enemy-item reveal">
-          <div class="k">03</div>
           <h3 data-i18n="enemy.c3h">Bieden tegen vier anderen</h3>
           <p data-i18n="enemy.c3p">Op offerteplatformen krijgt de klant jouw nummer én dat van de rest. Het draait op prijs, niet op vakmanschap.</p>
         </div>
         <div class="enemy-item reveal">
-          <div class="k">04</div>
           <h3 data-i18n="enemy.c4h">Goede maanden zijn niet te herhalen</h3>
-          <p data-i18n="enemy.c4p">Een sterke maand voelt goed, maar je kan niet aanwijzen waardoor het kwam — dus ook niet nog eens doen.</p>
+          <p data-i18n="enemy.c4p">Een sterke maand voelt goed, maar je weet niet waardoor. Dus kan je hem ook niet herhalen.</p>
         </div>
       </div>
 
@@ -874,13 +827,7 @@
         <div class="p1 reveal">
           <div class="mark">100%</div>
           <h3 data-i18n="promise.exclh">Eén aanvraag, één bouwbedrijf</h3>
-          <p data-i18n="promise.exclp">Wie op jouw advertentie klikt en jouw formulier invult, <b>vraagt naar jou</b>. Die aanvraag komt bij jou terecht en bij niemand anders. Dat is het verschil met vergelijkingssites: daar vult iemand één formulier in en wordt dat ene nummer aan vijf aannemers verkocht, die hem allemaal opbellen.</p>
-          <ul class="excl-rules">
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="promise.exclr1"><b>Nooit doorverkocht.</b> Er is geen gedeelde lijst met aanvragen waar meerdere bedrijven uit putten. Een aanvraag die bij jou binnenkomt, gaat nergens anders naartoe — dat is ons verdienmodel niet.</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="promise.exclr2"><b>Je adverteert onder je eigen naam.</b> Eigen beeld, eigen tekst, eigen aanvraagpagina. Mensen kiezen voor jouw zaak en jouw werk, niet voor een lijstje met vier offertes naast elkaar.</span></li>
-            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polyline points="20 6 9 17 4 12"/></svg><span data-i18n="promise.exclr3"><b>De keuze ligt bij de klant.</b> Hij beslist zelf op welke advertentie hij klikt en bij wie hij een offerte vraagt. Wie zijn werk het best toont en het snelst terugbelt, wint — niet wie het goedkoopste biedt.</span></li>
-          </ul>
-          <p class="excl-note" data-i18n="promise.exclnote">Duidelijk gezegd: exclusief slaat bij ons op de <b>aanvraag</b>, niet op de markt. Een eigenaar kan altijd zelf nog een tweede aannemer aanspreken — dat doet hij vandaag ook. Wat wij garanderen is dat wij zijn gegevens nooit aan iemand anders doorgeven, en dat jij ze meteen in WhatsApp krijgt zodat je als eerste aan de lijn hangt.</p>
+          <p data-i18n="promise.exclp"><b>Wie jouw formulier invult, vraagt naar jou.</b> Die aanvraag gaat naar jou en naar niemand anders — nooit doorverkocht, nooit gedeeld.</p>
         </div>
         <div class="p2 reveal">
           <div class="mark" data-i18n="promise.aimark">De juiste mensen</div>
@@ -897,51 +844,14 @@
         <div class="channel reveal">
           <span class="tag">Meta</span>
           <h3 data-i18n="pack.metah">Voordat ze zoeken</h3>
-          <p data-i18n="pack.metap">Facebook en Instagram bereiken mensen die nog niet actief op zoek zijn. Iemand die al twee winters twijfelt over zijn renovatie, ziet jouw werk voorbijkomen en vraagt een offerte aan. Dit levert het volume.</p>
+          <p data-i18n="pack.metap">Facebook en Instagram bereiken mensen die nog niet zoeken. Wie al twee winters over zijn renovatie twijfelt, ziet jouw werk en vraagt een offerte.</p>
         </div>
         <div class="channel reveal">
           <span class="tag">Google Search</span>
           <h3 data-i18n="pack.googleh">Nu een probleem</h3>
-          <p data-i18n="pack.googlep">Wie vandaag "aannemer in de buurt" of "dak hersteld" intikt, heeft nu iemand nodig. Daar staan we bovenaan. Minder volume, hoogste intentie — dit zijn de dringende werken.</p>
+          <p data-i18n="pack.googlep">Wie "aannemer in de buurt" intikt, heeft nu iemand nodig. Daar staan we bovenaan: minder volume, hoogste intentie.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- dagelijkse opvolging -->
-  <section class="block tight" id="opvolging">
-    <div class="wrap">
-      <div class="sec-head reveal">
-        <a class="halfmark meer" href="#aanbod" data-i18n="halves.mark1">Helft 1 · Méér</a><br>
-        <span class="eyebrow" data-i18n="watch.eyebrow">Dagelijkse opvolging</span>
-        <h2 class="h2" data-i18n="watch.h2">Je campagne blijft niet staan waar hij startte.</h2>
-        <p data-i18n="watch.p">De meeste campagnes worden aangezet en dan vergeten. Bij jouw campagne kijkt er elke werkdag iemand naar — dat is het verschil tussen advertentiebudget uitgeven en advertentiebudget laten renderen.</p>
-      </div>
-
-      <div class="watch">
-        <div class="row reveal">
-          <div class="k">01</div>
-          <h3 data-i18n="watch.r1h">Elke dag bekeken</h3>
-          <p data-i18n="watch.r1p">Je campagne wordt dagelijks opgevolgd. Zo zien we het meteen wanneer de aanvragen vertragen of duurder worden — niet pas bij het maandrapport, wanneer het geld al weg is.</p>
-        </div>
-        <div class="row reveal">
-          <div class="k">02</div>
-          <h3 data-i18n="watch.r2h">Meteen bijgestuurd</h3>
-          <p data-i18n="watch.r2p">Werkt een advertentie niet, dan gaat ze eruit. Loopt een doelgroep beter dan verwacht, dan verschuiven we daarheen. Je wacht niet tot het einde van de maand om te weten dat er iets mis liep.</p>
-        </div>
-        <div class="row reveal">
-          <div class="k">03</div>
-          <h3 data-i18n="watch.r3h">Wat werkt, gaat omhoog</h3>
-          <p data-i18n="watch.r3p">We kijken welke advertenties de meeste aanvragen opleveren tegen de laagste kost, en zetten daar meer budget op. Je beste advertentie krijgt zo de meeste ruimte.</p>
-        </div>
-        <div class="row reveal">
-          <div class="k">04</div>
-          <h3 data-i18n="watch.r4h">Voortdurend vergeleken</h3>
-          <p data-i18n="watch.r4p">Er lopen altijd meerdere versies naast elkaar — ander beeld, andere tekst, andere doelgroep. Die vergelijking stopt nooit, want wat vorige maand het beste werkte, is dat volgende maand niet automatisch nog.</p>
-        </div>
-      </div>
-
-      <p class="watch-foot reveal" data-i18n="watch.foot">Het resultaat daarvan is eenvoudig: <b>elke euro advertentiebudget gaat naar wat op dat moment het meeste aanvragen oplevert.</b> Geen budget dat maandenlang naar een advertentie loopt die niemand meer aanklikt.</p>
     </div>
   </section>
 
@@ -965,22 +875,22 @@
         <div class="row reveal">
           <div class="k">01</div>
           <h3 data-i18n="after.r1h">Binnen vijf minuten beantwoord</h3>
-          <p data-i18n="after.r1p">Wie een dak vol water heeft, belt drie bedrijven. Wie het eerst terugbelt, krijgt het werk. Elke aanvraag krijgt binnen vijf minuten antwoord — ook als jij op een ladder staat, ook om zeven uur &#39;s avonds.</p>
+          <p data-i18n="after.r1p">Wie een dak vol water heeft, belt drie bedrijven. Wie eerst terugbelt, krijgt het werk. Ook als jij op een ladder staat.</p>
         </div>
         <div class="row reveal">
           <div class="k">02</div>
           <h3 data-i18n="after.r2h">De afspraak staat meteen in je agenda</h3>
-          <p data-i18n="after.r2p">Geen heen-en-weer gebel over wanneer het past. Wij vragen door, plannen het plaatsbezoek in en zetten het in jouw agenda. Jij ziet &#39;s avonds gewoon wat er morgen op je staat.</p>
+          <p data-i18n="after.r2p">Geen heen-en-weer gebel. Wij plannen het plaatsbezoek en zetten het in jouw agenda. Jij ziet gewoon wat er morgen op staat.</p>
         </div>
         <div class="row reveal">
           <div class="k">03</div>
           <h3 data-i18n="after.r3h">Je offerte, zonder de avond eraan</h3>
-          <p data-i18n="after.r3p">Je staat op de werf, maakt een paar foto&#39;s en spreekt dertig seconden in via WhatsApp. Binnen het uur ligt er een afgewerkte offerte klaar in jouw huisstijl, met jouw prijzen. Jij leest na en verstuurt — de prijs blijft altijd jouw beslissing.</p>
+          <p data-i18n="after.r3p">Spreek dertig seconden in via WhatsApp. Binnen het uur ligt je offerte klaar, met jouw prijzen. Jij leest na en verstuurt.</p>
         </div>
         <div class="row reveal">
           <div class="k">04</div>
           <h3 data-i18n="after.r4h">Opgevolgd tot er ja of nee staat</h3>
-          <p data-i18n="after.r4p">Op dag drie, zeven en veertien gaat er een bericht uit je eigen naam. Niet opdringerig, wel volhardend. Zo bloedt geen enkel dossier meer stilletjes dood, en weet je van elke offerte waar je aan toe bent.</p>
+          <p data-i18n="after.r4p">Op dag drie, zeven en veertien gaat er een bericht uit jouw naam. Zo bloedt geen enkel dossier stilletjes dood.</p>
         </div>
       </div>
 
@@ -1011,65 +921,23 @@
           <a class="btn btn-wa" href="https://wa.me/32470123456"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.08-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48 0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.22 1.36.19 1.87.12.57-.09 1.77-.72 2.02-1.42.25-.7.25-1.29.17-1.42-.07-.13-.27-.2-.57-.35zM12 2a10 10 0 0 0-8.6 15.06L2 22l5.06-1.33A10 10 0 1 0 12 2z"/></svg><span data-i18n="cta.pilot">Vraag de pilot aan</span></a>
         </div>
 
-        <!-- VIDEOTESTIMONIAL — INVULPLEK
-             Een telefoonvideo van 40 seconden werkt beter dan een
-             professionele montage. Echt weegt zwaarder dan mooi. -->
-        <div class="video-slot slot reveal">
-          <div>
-            <svg class="ph-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="5" width="14" height="14" rx="2"/><path d="M16 10l6-3v10l-6-3z"/></svg>
-            <div class="slot-tag" data-i18n="proof.videotag">Videoreactie komt hier</div>
-            <p data-i18n="proof.videop">Korte reactie van het eerste bouwbedrijf — naam, zaak en gemeente eronder</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- ============================================================
-           BEWIJSPLEKKEN — NOG IN TE VULLEN
-           Vul deze in de volgorde waarin je het materiaal krijgt. Elke
-           plek vervangt zichzelf: haal de .slot-klasse weg en zet er de
-           echte inhoud in. Verzin hier NOOIT iets — een verzonnen cijfer
-           kost je meer geloofwaardigheid dan een lege plek.
-           ============================================================ -->
-      <div class="proof-slots">
-
-        <!-- 1. SCHERMAFBEELDING VAN BINNENKOMENDE AANVRAGEN
-             Bewijst dat het mechanisme werkt, ook zonder cijfers.
-             Maak een schermafbeelding van je WhatsApp met een paar
-             binnengekomen aanvragen. Maak namen, nummers en adressen
-             ONHERKENBAAR (zwarte balk of blur) — dat is geen optie
-             maar een GDPR-verplichting.
+        <!-- SCHERMAFBEELDING VAN BINNENKOMENDE AANVRAGEN — INVULPLEK
+             De enige bewijsplek die er nog staat: hij kan er binnenkort
+             echt zijn en bewijst dat het mechanisme werkt, ook zonder
+             cijfers. Maak een schermafbeelding van je WhatsApp met een
+             paar binnengekomen aanvragen. Maak namen, nummers en
+             adressen ONHERKENBAAR (zwarte balk of blur) — dat is geen
+             optie maar een GDPR-verplichting.
              Vervang dit blok door:
                <img src="bewijs-whatsapp.png" alt="Binnenkomende
                     aanvragen in WhatsApp" class="proof-shot">
              Formaat: staand of vierkant, min. 800 px breed. -->
-        <div class="proof-item slot reveal">
-          <svg class="ph-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
-          <div class="slot-tag" data-i18n="proof.shottag">Schermafbeelding komt hier</div>
-          <p data-i18n="proof.shotp">Binnenkomende aanvragen in WhatsApp — persoonsgegevens onherkenbaar gemaakt</p>
-        </div>
-
-        <!-- 2. EERSTE ECHTE CIJFERS, MÉT BEDRIJFSNAAM
-             Zonder naam is een cijfer een bewering. Vraag bij de pilot
-             uitdrukkelijk toestemming om naam en gemeente te vermelden.
-             Vervang dit blok door drie tegels: aantal aanvragen,
-             kost per aanvraag, periode — plus "Bij [Bedrijf] uit
-             [Gemeente], [maand jaartal]". -->
-        <div class="proof-item slot reveal">
-          <svg class="ph-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          <div class="slot-tag" data-i18n="proof.numtag">Cijfers komen hier</div>
-          <p data-i18n="proof.nump">Echte resultaten van de pilot, met bedrijfsnaam, gemeente en periode erbij</p>
-        </div>
-
-        <!-- 3. LOGOSTRIP VAN KLANTEN
-             Zolang je er geen hebt: laat dit blok staan of haal het
-             weg. Zet er NOOIT logo's in van bedrijven die geen klant
-             zijn — ook niet "ter illustratie".
-             Vervang later door een rij <img> met klantlogo's,
-             grijswaarden, max. 120 px breed per stuk. -->
-        <div class="proof-item slot reveal">
-          <svg class="ph-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 21h18M5 21V7l7-4 7 4v14M9 21v-6h6v6"/></svg>
-          <div class="slot-tag" data-i18n="proof.logotag">Klantenlogo's komen hier</div>
-          <p data-i18n="proof.logop">Logo's van bouwbedrijven waarvoor je campagnes draait — pas plaatsen met hun toestemming</p>
+        <div class="shot-slot slot reveal">
+          <div>
+            <svg class="ph-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
+            <div class="slot-tag" data-i18n="proof.shottag">Schermafbeelding komt hier</div>
+            <p data-i18n="proof.shotp">Binnenkomende aanvragen in WhatsApp — persoonsgegevens onherkenbaar gemaakt</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1158,15 +1026,14 @@
         <div class="pricecard">
           <div class="pc-lbl" data-i18n="price.fee1l">1 · Ons werk</div>
           <h3 data-i18n="price.fee1h">Vast maandbedrag voor de campagnes</h3>
-          <p data-i18n="price.fee1p">Advertenties en beeld maken, de aanvraagpagina bouwen, de campagnes op Meta en Google opzetten en ze elke werkdag opvolgen en bijsturen. Eén vast bedrag per maand, <b>vast maandbedrag en maandelijks opzegbaar</b>. Wat het wordt, hangt af van je werkgebied en hoeveel werk je erbij kan hebben — dat leggen we vast in het kennismakingsgesprek.</p>
+          <p data-i18n="price.fee1p">Advertenties, aanvraagpagina en het dagelijkse beheer van je campagnes. <b>Eén vast bedrag per maand, maandelijks opzegbaar.</b></p>
         </div>
         <div class="pricecard alt">
           <div class="pc-lbl" data-i18n="price.ad1l">2 · Je advertentiebudget</div>
           <h3 data-i18n="price.ad1h">Gaat rechtstreeks naar Meta en Google</h3>
-          <p data-i18n="price.ad1p">Dit is het geld waarmee je advertenties draaien. Het loopt <b>rechtstreeks van jouw kaart naar Meta en Google</b> — het passeert niet langs ons en we nemen er geen commissie op. Het staat op een advertentieaccount op jouw naam, dus je ziet zelf tot op de euro wat eraan uitgegeven wordt. Jij bepaalt het bedrag en kan het op elk moment hoger of lager zetten.</p>
+          <p data-i18n="price.ad1p">Het geld waarmee je advertenties draaien, <b>rechtstreeks van jouw kaart</b>. Geen commissie voor ons. Jij bepaalt het bedrag.</p>
         </div>
       </div>
-      <p class="price-note reveal" data-i18n="price.note">De twee staan volledig los van elkaar. Verhoog je je advertentiebudget, dan verandert ons maandbedrag niet — en omgekeerd.</p>
 
       <div class="faq reveal">
         <details>
@@ -1180,18 +1047,6 @@
         <details>
           <summary data-i18n="faq.q2">Wat als het niet werkt — kan ik stoppen?</summary>
           <p data-i18n="faq.a2">Ja, maandelijks. Geen jaarcontract, geen opzegtermijn van drie maanden. We vragen wel om het eerlijk te zeggen als iets niet loopt: negen van de tien keer is het bij te sturen, en dat is precies waarvoor we de campagne dagelijks opvolgen.</p>
-        </details>
-        <details>
-          <summary data-i18n="faq.q3">Hoe snel komen de eerste aanvragen binnen?</summary>
-          <p data-i18n="faq.a3">De campagne staat binnen vijf werkdagen live — dat hebben we zelf in de hand. Wanneer de eerste aanvraag binnenkomt, hangt af van je vak, je regio en het seizoen. Meestal laat ze niet lang op zich wachten, maar we beloven je geen datum die we niet kunnen garanderen.</p>
-        </details>
-        <details>
-          <summary data-i18n="faq.q4">In welke regio's werken jullie?</summary>
-          <p data-i18n="faq.a4">In heel België, in het Nederlands en het Frans. De campagne zelf loopt enkel binnen jouw eigen werkgebied — van één stad tot meerdere provincies, precies zoals jij het afbakent.</p>
-        </details>
-        <details>
-          <summary data-i18n="faq.q5">Krijg ik een factuur, en is dit aftrekbaar?</summary>
-          <p data-i18n="faq.a5">Je krijgt elke maand een factuur met btw. Advertentiekosten zijn voor een bouwbedrijf een gewone beroepskost — vraag je boekhouder naar jouw situatie.</p>
         </details>
         <details>
           <summary data-i18n="faq.q6">Moet ik zelf nog iets doen?</summary>
@@ -1323,7 +1178,6 @@
           <li><a href="#stille-agenda" data-i18n="nav.agenda">De stille agenda</a></li>
           <li><a href="#gids" data-i18n="nav.gids">Wie wij zijn</a></li>
           <li><a href="#aanpak" data-i18n="nav.aanpak">Aanpak</a></li>
-          <li><a href="#opvolging" data-i18n="watch.eyebrow">Dagelijkse opvolging</a></li>
           <li><a href="#plan" data-i18n="nav.plan">Het plan</a></li>
         </ul>
       </div>
@@ -1435,17 +1289,13 @@ var FR = {
   "halves.link2":"Voilà comment nous les suivons",
   "halves.mark1":"Moitié 1 · Plus","halves.mark2":"Moitié 2 · Mieux",
 
-  "define.pos":"verbe — anglais",
-  "define.m1":"amplifier, agrandir, rendre plus audible. Prendre un signal qui existe déjà — et le faire entendre à ceux qui doivent l'entendre.",
-  "define.m2":"C'est ce que nous faisons avec votre entreprise. Votre savoir-faire est le signal. Nous y ajoutons de la portée, pour que les bonnes personnes vous trouvent et demandent un devis.",
-
   "enemy.eyebrow":"L'agenda silencieux",
   "enemy.h2":"Ce n'est pas votre travail qui est en cause.<br>C'est ce qui décide de votre agenda.",
   "enemy.p":"Vous savez ce que vous valez. Sauf que c'est autre chose qui décide quand le téléphone sonne — et c'est là tout le problème.",
-  "enemy.c1h":"La saison décide","enemy.c1p":"Chargé en automne, silence au printemps. Votre agenda suit la météo et le marché au lieu de l'inverse.",
+  "enemy.c1h":"La saison décide","enemy.c1p":"Chargé en automne, calme au printemps. Votre agenda suit la météo au lieu de l'inverse.",
   "enemy.c2h":"Le bouche-à-oreille se tarit","enemy.c2p":"Un quartier ou un donneur d'ordre remplit des mois de travail. Jusqu'à ce que ce soit fini et que le silence revienne.",
   "enemy.c3h":"Enchérir contre quatre autres","enemy.c3p":"Sur les plateformes de devis, le client reçoit votre numéro et celui des autres. Tout se joue sur le prix, pas sur le savoir-faire.",
-  "enemy.c4h":"Les bons mois ne se répètent pas","enemy.c4p":"Un bon mois fait plaisir, mais vous ne pouvez pas dire d'où il vient — donc pas le reproduire non plus.",
+  "enemy.c4h":"Les bons mois ne se répètent pas","enemy.c4p":"Un bon mois fait plaisir, mais vous ne savez pas d'où il vient. Donc vous ne pouvez pas le refaire.",
   "enemy.cta":"Ça vous parle ? Dites-nous en deux phrases ce qui se passe chez vous.",
 
   "guide.eyebrow":"Qui se tient à vos côtés",
@@ -1461,40 +1311,27 @@ var FR = {
   "promise.h2":"Deux choses déterminent si la publicité fonctionne.",
   "promise.p":"Chez ceux qui nous appellent, ça coince presque toujours sur les deux mêmes points. C'est là-dessus que nous avons bâti notre approche.",
   "promise.exclh":"Une demande, une entreprise",
-  "promise.exclp":"Celui qui clique sur votre publicité et remplit votre formulaire <b>s'adresse à vous</b>. Cette demande arrive chez vous et chez personne d'autre. C'est la différence avec les comparateurs : là, quelqu'un remplit un seul formulaire et ce même numéro est revendu à cinq entrepreneurs qui l'appellent tous.",
-  "promise.exclr1":"<b>Jamais revendue.</b> Il n'existe pas de liste commune de demandes dans laquelle plusieurs entreprises viennent puiser. Une demande qui arrive chez vous ne part nulle part ailleurs — ce n'est pas notre modèle.",
-  "promise.exclr2":"<b>Vous faites de la publicité sous votre propre nom.</b> Vos visuels, vos textes, votre page de demande. Les gens choisissent votre entreprise et votre travail, pas une liste de quatre devis côte à côte.",
-  "promise.exclr3":"<b>Le choix appartient au client.</b> C'est lui qui décide sur quelle publicité il clique et à qui il demande un devis. Celui qui montre le mieux son travail et rappelle le plus vite l'emporte — pas celui qui casse les prix.",
-  "promise.exclnote":"Soyons clairs : chez nous, exclusif porte sur la <b>demande</b>, pas sur le marché. Un propriétaire peut toujours contacter un deuxième entrepreneur de lui-même — il le fait déjà aujourd'hui. Ce que nous garantissons, c'est que nous ne transmettons jamais ses coordonnées à quelqu'un d'autre, et que vous les recevez immédiatement sur WhatsApp pour être le premier au téléphone.",
+  "promise.exclp":"<b>Celui qui remplit votre formulaire s'adresse à vous.</b> Cette demande va vers vous et vers personne d'autre — jamais revendue, jamais partagée.",
   "promise.aih":"Votre publicité n'arrive pas chez tout le monde",
   "promise.aip":"Nous montrons vos publicités uniquement à ceux qui peuvent en faire quelque chose : des <b>propriétaires d'une habitation dans votre zone de travail</b> qui ont récemment cherché un entrepreneur ou votre type de travaux, ou qui s'y intéressent sur Facebook et Instagram. Ceux qui louent, habitent trop loin ou n'ont aucun projet ne les voient pas — et ne vous coûtent donc rien.",
 
   "pack.eyebrow":"Un pack, deux canaux — Meta pour ceux qui ne cherchent pas encore, Google pour ceux qui ont besoin de quelqu'un maintenant.",
   "pack.metah":"Avant qu'ils ne cherchent",
-  "pack.metap":"Facebook et Instagram touchent des gens qui ne cherchent pas encore activement. Quelqu'un qui hésite depuis deux hivers sur sa rénovation voit votre travail passer et demande un devis. C'est ce qui apporte le volume.",
+  "pack.metap":"Facebook et Instagram touchent des gens qui ne cherchent pas encore. Celui qui hésite depuis deux hivers sur sa rénovation voit votre travail et demande un devis.",
   "pack.googleh":"Un problème maintenant",
-  "pack.googlep":"Celui qui tape aujourd'hui « entrepreneur près de chez moi » ou « toiture réparée » a besoin de quelqu'un maintenant. Là, nous sommes en tête. Moins de volume, la plus haute intention — ce sont les travaux urgents.",
-
-  "watch.eyebrow":"Suivi quotidien",
-  "watch.h2":"Votre campagne ne reste pas là où elle a démarré.",
-  "watch.p":"La plupart des campagnes sont lancées puis oubliées. Sur la vôtre, quelqu'un regarde chaque jour ouvré — c'est la différence entre dépenser un budget publicitaire et le faire rendre.",
-  "watch.r1h":"Regardée chaque jour","watch.r1p":"Votre campagne est suivie quotidiennement. Nous voyons tout de suite quand les demandes ralentissent ou deviennent plus chères — pas seulement au rapport mensuel, quand l'argent est déjà parti.",
-  "watch.r2h":"Ajustée immédiatement","watch.r2p":"Si une publicité ne marche pas, elle sort. Si une audience marche mieux que prévu, nous y déplaçons le budget. Vous n'attendez pas la fin du mois pour apprendre que quelque chose a mal tourné.",
-  "watch.r3h":"Ce qui marche monte","watch.r3p":"Nous regardons quelles publicités rapportent le plus de demandes au coût le plus bas, et y mettons plus de budget. Votre meilleure publicité obtient ainsi le plus d'espace.",
-  "watch.r4h":"Comparée en continu","watch.r4p":"Plusieurs versions tournent toujours en parallèle — autre visuel, autre texte, autre audience. Cette comparaison ne s'arrête jamais, car ce qui marchait le mieux le mois dernier ne l'est pas automatiquement le mois suivant.",
-  "watch.foot":"Le résultat est simple : <b>chaque euro de budget publicitaire va vers ce qui rapporte le plus de demandes à ce moment-là.</b> Pas de budget qui part des mois vers une publicité que plus personne ne clique.",
+  "pack.googlep":"Celui qui tape « entrepreneur près de chez moi » a besoin de quelqu'un maintenant. Là, nous sommes en tête : moins de volume, la plus haute intention.",
 
   "after.eyebrow":"Après la demande",
   "after.h2":"Une demande ne devient un chantier que si quelqu'un la suit.",
   "after.p":"La plupart des demandes ne se perdent pas parce qu'elles sont mauvaises, mais parce que deux jours passent. Ou parce que le devis attend jusqu'au soir. C'est pourquoi notre travail ne s'arrête pas quand la demande arrive — c'est là qu'il commence.",
   "after.r1h":"Une réponse en cinq minutes",
-  "after.r1p":"Celui qui a une toiture qui fuit appelle trois entreprises. Celle qui rappelle en premier obtient le chantier. Chaque demande reçoit une réponse en cinq minutes — même quand vous êtes sur une échelle, même à sept heures du soir.",
+  "after.r1p":"Celui qui a une toiture qui fuit appelle trois entreprises. Celle qui rappelle en premier obtient le chantier. Même quand vous êtes sur une échelle.",
   "after.r2h":"Le rendez-vous est directement dans votre agenda",
-  "after.r2p":"Fini les allers-retours téléphoniques. Nous posons les bonnes questions, planifions la visite sur place et l'inscrivons dans votre agenda. Le soir, vous voyez simplement ce qui vous attend demain.",
+  "after.r2p":"Fini les allers-retours téléphoniques. Nous planifions la visite et l'inscrivons dans votre agenda. Vous voyez simplement ce qui vous attend demain.",
   "after.r3h":"Votre devis, sans y passer la soirée",
-  "after.r3p":"Vous êtes sur le chantier, vous prenez quelques photos et vous enregistrez trente secondes via WhatsApp. En moins d'une heure, un devis fini vous attend, à votre image et avec vos prix. Vous relisez et vous envoyez — le prix reste toujours votre décision.",
+  "after.r3p":"Enregistrez trente secondes via WhatsApp. En moins d'une heure, votre devis est prêt, avec vos prix. Vous relisez et vous envoyez.",
   "after.r4h":"Suivi jusqu'à un oui ou un non",
-  "after.r4p":"Aux jours trois, sept et quatorze, un message part en votre nom. Sans insistance, mais avec constance. Ainsi plus aucun dossier ne s'éteint en silence, et vous savez où vous en êtes pour chaque devis.",
+  "after.r4p":"Aux jours trois, sept et quatorze, un message part en votre nom. Ainsi plus aucun dossier ne s'éteint en silence.",
   "after.foot":"La différence est simple : <b>la plupart des agences vous livrent une demande et disparaissent.</b> Nous restons jusqu'à ce qu'il y ait une signature — ou jusqu'à ce que vous sachiez que ça ne se fera pas.",
   "proof.eyebrow":"Preuves",
   "proof.h2":"Les premiers chiffres viennent d'une entreprise de la région.",
@@ -1504,12 +1341,6 @@ var FR = {
   "proof.casep":"Une entreprise, 30 jours, au prix coûtant — vous ne payez que le budget publicitaire. En échange, nous partageons les chiffres et demandons une courte réaction vidéo si ça marche. Condition : vous avez la capacité de réellement suivre les demandes.",
   "proof.shottag":"Capture d'écran ici",
   "proof.shotp":"Demandes entrantes dans WhatsApp — données personnelles rendues illisibles",
-  "proof.numtag":"Chiffres ici",
-  "proof.nump":"Résultats réels du pilote, avec nom d'entreprise, commune et période",
-  "proof.logotag":"Logos clients ici",
-  "proof.logop":"Logos des entreprises pour lesquelles vous menez des campagnes — uniquement avec leur accord",
-  "proof.videotag":"Réaction vidéo ici",
-  "proof.videop":"Courte réaction de la première entreprise — nom, société et commune en dessous",
 
   "plan.eyebrow":"Le plan",
   "plan.h2":"Trois étapes. Pour le reste, vous n'avez rien à faire.",
@@ -1526,23 +1357,16 @@ var FR = {
   "faq.h2":"Ce que les entrepreneurs nous demandent en premier.",
   "price.fee1l":"1 · Notre travail",
   "price.fee1h":"Montant mensuel fixe pour les campagnes",
-  "price.fee1p":"Créer les publicités et les visuels, construire la page de demande, mettre en place les campagnes sur Meta et Google et les suivre et ajuster chaque jour ouvré. Un montant fixe par mois, <b>montant mensuel fixe et résiliable chaque mois</b>. Le montant dépend de votre zone de travail et du volume de travail que vous pouvez absorber — nous le fixons lors de la prise de contact.",
+  "price.fee1p":"Les publicités, la page de demande et la gestion quotidienne de vos campagnes. <b>Un montant fixe par mois, résiliable chaque mois.</b>",
   "price.ad1l":"2 · Votre budget publicitaire",
   "price.ad1h":"Va directement à Meta et Google",
-  "price.ad1p":"C'est l'argent qui fait tourner vos publicités. Il part <b>directement de votre carte vers Meta et Google</b> — il ne passe pas par nous et nous ne prenons aucune commission dessus. Il se trouve sur un compte publicitaire à votre nom : vous voyez donc à l'euro près ce qui est dépensé. C'est vous qui fixez le montant et vous pouvez l'augmenter ou le baisser à tout moment.",
-  "price.note":"Les deux sont totalement indépendants. Si vous augmentez votre budget publicitaire, notre montant mensuel ne change pas — et inversement.",
+  "price.ad1p":"L'argent qui fait tourner vos publicités, <b>directement depuis votre carte</b>. Aucune commission pour nous. C'est vous qui fixez le montant.",
   "faq.q0":"Le budget publicitaire est-il compris dans votre montant mensuel ?",
   "faq.a0":"Non. Ce sont deux coûts distincts. Notre montant mensuel rémunère notre travail : créer les publicités, gérer les campagnes et les ajuster quotidiennement. Le budget publicitaire, vous le payez directement à Meta et Google, depuis votre propre carte sur votre propre compte publicitaire. Cet argent ne passe jamais par nous et nous n'y prenons aucune commission. Vous pouvez adapter le budget à tout moment sans que notre montant bouge.",
   "faq.q1":"Qui possède le compte publicitaire et les données ?",
   "faq.a1":"Vous. Nous travaillons dans un compte publicitaire au nom de votre entreprise, et vous restez propriétaire du compte, des données de campagne et de toutes les demandes qui en découlent. Si la collaboration s'arrête, tout reste en place.",
   "faq.q2":"Et si ça ne marche pas — puis-je arrêter ?",
   "faq.a2":"Oui, chaque mois. Pas de contrat annuel, pas de préavis de trois mois. Nous vous demandons simplement de le dire franchement si quelque chose ne tourne pas : neuf fois sur dix c'est corrigeable, et c'est précisément pour cela que nous suivons la campagne quotidiennement.",
-  "faq.q3":"Quand arrivent les premières demandes ?",
-  "faq.a3":"La campagne est en ligne sous cinq jours ouvrés — cela, nous le maîtrisons. Le moment où arrive la première demande dépend de votre métier, de votre région et de la saison. En général elle ne se fait pas attendre, mais nous ne promettons pas une date que nous ne pouvons pas garantir.",
-  "faq.q4":"Dans quelles régions travaillez-vous ?",
-  "faq.a4":"Dans toute la Belgique, en néerlandais et en français. La campagne elle-même ne tourne que dans votre propre zone de travail — d'une seule ville à plusieurs provinces, exactement comme vous la délimitez.",
-  "faq.q5":"Est-ce que je reçois une facture, et est-ce déductible ?",
-  "faq.a5":"Vous recevez chaque mois une facture avec TVA. Les frais publicitaires sont une charge professionnelle ordinaire pour une entreprise de construction — demandez à votre comptable ce qu'il en est dans votre situation.",
   "faq.q6":"Dois-je encore faire quelque chose moi-même ?",
   "faq.a6":"Une seule chose : rappeler. Nous construisons les publicités, les visuels et la page de demande, et suivons la campagne chaque jour. Vous recevez la demande sur WhatsApp avec le nom, la commune et ce qu'il faut faire. Celui qui rappelle vite en tire le plus.",
 
@@ -1636,21 +1460,6 @@ var WA_TEKST = {
     revs.forEach(function(r){ io.observe(r); });
   } else { revs.forEach(function(r){ r.classList.add('in'); }); }
 
-  /* balkjes in het amp·li·fy-blok */
-  var bars = document.querySelectorAll('.define .bars-mini i');
-  var heights = [40,62,54,78,70,96];
-  if(bars.length){
-    var bio = new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(e.isIntersecting){
-          bars.forEach(function(b,i){ b.style.height = (reduce?heights[i]:0)+'%'; });
-          if(!reduce){ setTimeout(function(){ bars.forEach(function(b,i){ b.style.height = heights[i]+'%'; }); },80); }
-          bio.disconnect();
-        }
-      });
-    },{threshold:0.4});
-    bio.observe(document.querySelector('.define'));
-  }
 })();
 </script>
 <!-- ============================================================
