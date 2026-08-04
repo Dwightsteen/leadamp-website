@@ -61,6 +61,14 @@
     --gold:#A9761F;
     --gold-soft:#F6EFE1;
     --green:#0C8A48;
+    /* donkere band + accenten die daarop leesbaar blijven.
+       Op wit gebruiken we --blue en --green; op navy zijn die te
+       donker, vandaar de "lit"-varianten. */
+    --navy-deep:#0A1B2E;
+    --navy-line:#24425F;
+    --navy-fg:#B9CBDC;
+    --green-lit:#25D366;
+    --gold-lit:#E8A33D;
     --line:rgba(16,23,37,0.10);
     --line-soft:rgba(16,23,37,0.06);
     --r:16px;
@@ -89,6 +97,7 @@
   .h2{font-size:clamp(1.95rem,4vw,3.05rem)}
   .lede{color:var(--muted);font-size:clamp(1.08rem,1.6vw,1.32rem);line-height:1.6;max-width:44ch}
   .blue{color:var(--blue)}
+  .green{color:var(--green)}
 
   .eyebrow{
     font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;
@@ -208,6 +217,90 @@
   .assurance{display:flex;flex-wrap:wrap;gap:12px 30px;color:var(--muted);font-size:14.5px;font-weight:600}
   .assurance span{display:flex;align-items:center;gap:9px}
   .assurance svg{width:16px;height:16px;color:var(--green)}
+
+  /* ============================================================
+     HET AANBOD — TWEE HELFTEN
+     De kaart van de hele pagina, meteen onder de hero. Alles wat
+     verderop staat hangt onder één van twee helften:
+       MÉÉR  — aanvragen binnenhalen die er anders niet waren
+       BÉTER — zorgen dat er geen enkele verloren gaat
+     Kleurcode: blauw = méér, groen = béter. Die twee kleuren
+     komen verderop terug op de secties die eronder vallen
+     (.halfmark, en de nummers in #opvolging / #na-de-aanvraag),
+     zodat hij bij elke sectie ziet bij welke helft ze hoort.
+
+     De donkere band is er om het blok te dragen: de twee kaarten
+     schuiven er met een negatieve marge overheen, zodat het één
+     geheel is en niet twee losse dingen onder elkaar.
+     ============================================================ */
+  .halves-band{background:var(--navy-deep);color:#fff;padding:clamp(54px,7vw,84px) 0 clamp(78px,9vw,116px)}
+  .halves-band .eyebrow{color:var(--gold-lit);margin-bottom:24px}
+  .halves-band .eyebrow::before{background:var(--gold-lit)}
+  .halves-band h2{color:#fff;margin-bottom:20px;max-width:18ch}
+  .halves-band h2 .b{color:var(--green-lit)}
+  .halves-band p{color:var(--navy-fg);font-size:1.12rem;max-width:56ch}
+
+  .halves{
+    display:grid;grid-template-columns:1fr 1fr;background:#fff;
+    border:1px solid var(--line);border-radius:var(--r);overflow:hidden;
+    margin-top:clamp(-72px,-6.5vw,-48px);position:relative;z-index:2;
+    box-shadow:0 34px 64px -44px rgba(10,27,46,.6);
+  }
+  .half{padding:clamp(28px,3.6vw,42px);border-right:1px solid var(--line);display:flex;flex-direction:column}
+  .half:last-child{border-right:0}
+  .half .tag{
+    font-family:'JetBrains Mono';font-size:10.5px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:#fff;padding:5px 12px;border-radius:100px;
+    align-self:flex-start;margin-bottom:18px;
+  }
+  .half.meer .tag{background:var(--blue)}
+  .half.beter .tag{background:var(--green)}
+  .half h3{font-size:clamp(1.9rem,3.4vw,2.6rem);font-weight:700;letter-spacing:-.04em;margin-bottom:8px}
+  .half .claim{font-size:1.06rem;font-weight:600;color:var(--ink);margin-bottom:22px;max-width:26ch}
+  .half ul{list-style:none;margin:0;padding:0}
+  .half li{
+    font-size:15.5px;line-height:1.55;color:var(--muted);
+    padding:11px 0 11px 22px;border-top:1px solid var(--line-soft);position:relative;
+  }
+  .half li b{color:var(--ink);font-weight:700}
+  /* vierkantje in plaats van een bolletje of vinkje: zelfde vorm als
+     de staven in het logo, en het houdt de lijst rustig */
+  .half li::before{content:"";position:absolute;left:0;top:19px;width:7px;height:7px;border-radius:2px}
+  .half.meer li::before{background:var(--blue)}
+  .half.beter li::before{background:var(--green)}
+  /* wat hij zelf zegt — in mono, zodat het leest als een citaat en
+     niet als nog een verkoopregel */
+  .half .heard{
+    margin-top:26px;padding-top:18px;border-top:2px solid var(--ink);
+    font-family:'JetBrains Mono';font-size:13px;line-height:1.62;color:var(--muted);
+  }
+  .half .heard b{
+    display:block;font-size:10px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted-dim);margin-bottom:7px;
+  }
+  .half .textlink{margin-top:auto;padding-top:26px;font-size:15px;border-bottom:0}
+  .half .textlink span{border-bottom:1px solid var(--line);padding-bottom:3px}
+  .half.meer .textlink svg{color:var(--blue)}
+  .half.beter .textlink svg{color:var(--green)}
+
+  /* het merkje dat een sectie verderop aan een helft koppelt */
+  .halfmark{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'JetBrains Mono';font-size:10.5px;font-weight:700;letter-spacing:.14em;
+    text-transform:uppercase;color:#fff;padding:5px 12px;border-radius:100px;margin-bottom:20px;
+  }
+  .halfmark.meer{background:var(--blue)}
+  .halfmark.beter{background:var(--green)}
+  .halfmark:hover{opacity:.88}
+  /* dezelfde kleurcode op de genummerde rijen van beide helften */
+  #opvolging .watch .row .k{color:var(--blue)}
+  #na-de-aanvraag .watch .row .k{color:var(--green)}
+
+  @media(max-width:860px){
+    .halves{grid-template-columns:1fr;margin-top:clamp(-52px,-5vw,-34px)}
+    .half{border-right:0;border-bottom:1px solid var(--line)}
+    .half:last-child{border-bottom:0}
+  }
 
   /* ---------- amp·li·fy ---------- */
   .define{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:var(--paper-warm)}
@@ -500,6 +593,7 @@
    <!-- menu op een eigen regel onder het merk — niet meer geknepen tussen
         de naam en de knop -->
    <nav class="navlinks">
+     <a href="#aanbod" data-i18n="nav.aanbod">Het aanbod</a>
      <a href="#stille-agenda" data-i18n="nav.agenda">Meer aanvragen</a>
      <a href="#gids" data-i18n="nav.gids">Over ons</a>
      <a href="#aanpak" data-i18n="nav.aanpak">Aanpak</a>
@@ -518,7 +612,10 @@
      <div class="hero-copy">
       <!-- sectorfocus: het eerste wat je leest, boven de titel -->
       <span class="eyebrow hero-sector" data-i18n="hero.sector">100% gericht op de bouwsector</span>
-      <h1 class="display" data-i18n="hero.h1">Méér aanvragen. En <span class="blue">geen enkele die verloren gaat.</span></h1>
+      <!-- de twee helften zitten al in de titel: méér (blauw, verderop
+           de campagnes) en béter (groen, de opvolging). Dezelfde twee
+           kleuren lopen door tot onderaan de pagina. -->
+      <h1 class="display" data-i18n="hero.h1">Méér aanvragen. En <span class="green">geen enkele die verloren gaat.</span></h1>
       <p class="lede" data-i18n="hero.lede">Je levert vakwerk. Wij zorgen dat er aanvragen binnenkomen uit je eigen regio, exclusief voor jou — en dat elke aanvraag beantwoord, ingepland en opgevolgd wordt. Ook als jij op een dak staat.</p>
 
       <!-- exclusiviteit staat vlak vóór de knop: het laatste wat hij leest
@@ -569,8 +666,65 @@
     </div>
   </section>
 
+  <!-- ============================================================
+       HET AANBOD — TWEE HELFTEN
+       Meteen na de hero, want dit is de kaart van de rest van de
+       pagina: hij ziet in één oogopslag wat hij krijgt en waar zijn
+       eigen knelpunt zit. De rest van de pagina werkt deze twee
+       helften uit — de kleur zegt telkens onder welke helft je zit.
+
+       De regels hieronder zijn een samenvatting van wat verderop
+       staat. Verander je daar iets, verander het hier dan mee —
+       anders belooft dit blok iets dat de pagina niet uitlegt.
+       ============================================================ -->
+  <section id="aanbod">
+    <div class="halves-band">
+      <div class="wrap reveal">
+        <span class="eyebrow" data-i18n="halves.eyebrow">Het aanbod</span>
+        <h2 class="h2" data-i18n="halves.h2">Twee helften, <span class="b">één belofte.</span></h2>
+        <p data-i18n="halves.p">Alles wat we voor je doen valt onder één van beide: méér aanvragen binnenhalen, en zorgen dat er geen enkele verloren gaat. Er is niets anders.</p>
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="halves reveal">
+
+        <div class="half meer">
+          <span class="tag" data-i18n="halves.tag1">Helft 1</span>
+          <h3 data-i18n="halves.h1t">Méér</h3>
+          <p class="claim" data-i18n="halves.claim1">Aanvragen die er zonder ons niet waren.</p>
+          <ul>
+            <li data-i18n="halves.m1"><b>Meta-campagnes</b> in jouw werkgebied</li>
+            <li data-i18n="halves.m2"><b>Google Search</b> voor wie nú iemand nodig heeft</li>
+            <li data-i18n="halves.m3"><b>Exclusief</b> — nooit doorverkocht aan een concurrent</li>
+            <li data-i18n="halves.m4">Advertenties en aanvraagpagina op jouw naam</li>
+            <li data-i18n="halves.m5">Elke werkdag opgevolgd en bijgestuurd</li>
+          </ul>
+          <div class="heard"><b data-i18n="halves.heardl">Wat we horen</b><span data-i18n="halves.heard1">"Het is te stil. Ik weet niet waar mijn volgende werf vandaan komt."</span></div>
+          <a class="textlink" href="#aanpak"><span data-i18n="halves.link1">Zo halen we ze binnen</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+
+        <div class="half beter">
+          <span class="tag" data-i18n="halves.tag2">Helft 2</span>
+          <h3 data-i18n="halves.h2t">Béter</h3>
+          <p class="claim" data-i18n="halves.claim2">Wat binnenkomt, gaat niet meer verloren.</p>
+          <ul>
+            <li data-i18n="halves.b1"><b>Elke aanvraag binnen vijf minuten</b> beantwoord</li>
+            <li data-i18n="halves.b2">De afspraak staat meteen in jouw agenda</li>
+            <li data-i18n="halves.b3"><b>Offerte uit een spraakbericht</b> — jij keurt goed, wij typen</li>
+            <li data-i18n="halves.b4">Elke offerte opgevolgd op dag 3, 7 en 14</li>
+            <li data-i18n="halves.b5">Jij weet van elk dossier waar je aan toe bent</li>
+          </ul>
+          <div class="heard"><b data-i18n="halves.heardl">Wat we horen</b><span data-i18n="halves.heard2">"Ik zit drie avonden per week offertes te typen. En van de helft hoor ik nooit meer iets."</span></div>
+          <a class="textlink" href="#na-de-aanvraag"><span data-i18n="halves.link2">Zo volgen we ze op</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <!-- amp·li·fy — wat de naam betekent -->
-  <section class="define">
+  <section class="define" style="margin-top:clamp(56px,7vw,96px)">
     <div class="wrap">
       <div class="word">
         <div class="w">amp·li·fy</div>
@@ -684,6 +838,8 @@
   <section class="block tight" id="aanpak">
     <div class="wrap">
       <div class="sec-head reveal">
+        <!-- merkje: deze sectie werkt helft 1 uit -->
+        <a class="halfmark meer" href="#aanbod" data-i18n="halves.mark1">Helft 1 · Méér</a><br>
         <span class="eyebrow" data-i18n="promise.eyebrow">Waarop het meestal misgaat</span>
         <h2 class="h2" data-i18n="promise.h2">Twee dingen bepalen of adverteren werkt.</h2>
         <p data-i18n="promise.p">Bij wie ons belt, gaat het bijna altijd op dezelfde twee punten mis. Daar hebben we onze aanpak op gebouwd.</p>
@@ -731,6 +887,7 @@
   <section class="block tight" id="opvolging">
     <div class="wrap">
       <div class="sec-head reveal">
+        <a class="halfmark meer" href="#aanbod" data-i18n="halves.mark1">Helft 1 · Méér</a><br>
         <span class="eyebrow" data-i18n="watch.eyebrow">Dagelijkse opvolging</span>
         <h2 class="h2" data-i18n="watch.h2">Je campagne blijft niet staan waar hij startte.</h2>
         <p data-i18n="watch.p">De meeste campagnes worden aangezet en dan vergeten. Bij jouw campagne kijkt er elke werkdag iemand naar — dat is het verschil tussen advertentiebudget uitgeven en advertentiebudget laten renderen.</p>
@@ -772,6 +929,8 @@
   <section class="block tight" id="na-de-aanvraag">
     <div class="wrap">
       <div class="sec-head reveal">
+        <!-- merkje: hier begint helft 2 -->
+        <a class="halfmark beter" href="#aanbod" data-i18n="halves.mark2">Helft 2 · Béter</a><br>
         <span class="eyebrow" data-i18n="after.eyebrow">Na de aanvraag</span>
         <h2 class="h2" data-i18n="after.h2">Een aanvraag wordt pas een werf als er iemand achteraan gaat.</h2>
         <p data-i18n="after.p">De meeste aanvragen gaan niet verloren omdat ze slecht zijn, maar omdat er twee dagen tussen zit. Of omdat de offerte blijft liggen tot &#39;s avonds. Daarom stopt ons werk niet wanneer de aanvraag binnenkomt — daar begint het pas.</p>
@@ -1131,6 +1290,7 @@
       <div>
         <h4 data-i18n="foot.menu">Menu</h4>
         <ul>
+          <li><a href="#aanbod" data-i18n="nav.aanbod">Het aanbod</a></li>
           <li><a href="#stille-agenda" data-i18n="nav.agenda">De stille agenda</a></li>
           <li><a href="#gids" data-i18n="nav.gids">Wie wij zijn</a></li>
           <li><a href="#aanpak" data-i18n="nav.aanpak">Aanpak</a></li>
@@ -1207,18 +1367,42 @@ var FR = {
   "meta.title":"LEAD AMP — la publicité digitale qui apporte plus de demandes qualifiées aux entreprises de construction",
   "meta.desc":"LEAD AMP booste votre entreprise de construction avec des publicités Meta et Google : un flux de demandes exclusives et qualifiées de votre région. Résiliable chaque mois, montant mensuel fixe.",
 
-  "nav.agenda":"Plus de demandes","nav.gids":"À propos","nav.aanpak":"Approche","nav.plan":"Le plan","nav.contact":"Contact",
+  "nav.aanbod":"L'offre","nav.agenda":"Plus de demandes","nav.gids":"À propos","nav.aanpak":"Approche","nav.plan":"Le plan","nav.contact":"Contact",
 
   "cta.responsetime":"Réponse sous 2 heures pendant les heures de bureau.",
   "cta.wa":"Envoyer un WhatsApp","cta.wa_us":"Envoyer un WhatsApp","cta.wa_short":"WhatsApp","cta.call":"Ou appelez-nous","cta.call_short":"Appeler","cta.pilot":"Demander le pilote",
 
   "hero.sector":"100% dédié au secteur de la construction",
   "hero.lock":"<b>Celui qui remplit votre formulaire s'adresse à vous.</b> Cette demande va vers vous et vers personne d'autre. Nous ne revendons ni ne partageons jamais une demande à une deuxième entreprise.",
-  "hero.h1":"Recevez des demandes qualifiées <span class=\"blue\">toute l'année</span>",
+  "hero.h1":"Plus de demandes. Et <span class=\"green\">plus aucune qui se perd.</span>",
   "promise.aimark":"Les bonnes personnes",
   "hero.shottag":"Image ici","hero.shotp":"Photo d'équipe (verticale 4:5) ou téléphone avec demandes entrantes",
-  "hero.lede":"Vous livrez du travail de qualité. La seule chose qui varie, c'est le nombre de demandes qui arrivent. Nous y mettons de la structure — un flux constant de demandes de projets de votre propre région, exclusivement pour vous.",
+  "hero.lede":"Vous livrez du travail de qualité. Nous faisons entrer des demandes de votre propre région, exclusivement pour vous — et nous veillons à ce que chaque demande reçoive une réponse, un rendez-vous et un suivi. Même quand vous êtes sur un toit.",
   "assure.1":"Chaque demande exclusivement à vous","assure.2":"Résiliable chaque mois","assure.3":"Montant mensuel fixe, sans surprises",
+
+  "halves.eyebrow":"L'offre",
+  "halves.h2":"Deux moitiés, <span class=\"b\">une seule promesse.</span>",
+  "halves.p":"Tout ce que nous faisons pour vous relève de l'une des deux : faire entrer plus de demandes, et veiller à ce qu'aucune ne se perde. Il n'y a rien d'autre.",
+  "halves.tag1":"Moitié 1","halves.tag2":"Moitié 2",
+  "halves.h1t":"Plus","halves.h2t":"Mieux",
+  "halves.claim1":"Des demandes qui n'existeraient pas sans nous.",
+  "halves.claim2":"Ce qui arrive ne se perd plus.",
+  "halves.m1":"<b>Campagnes Meta</b> dans votre zone de travail",
+  "halves.m2":"<b>Google Search</b> pour ceux qui ont besoin de quelqu'un maintenant",
+  "halves.m3":"<b>Exclusif</b> — jamais revendue à un concurrent",
+  "halves.m4":"Publicités et page de demande à votre nom",
+  "halves.m5":"Suivie et ajustée chaque jour ouvré",
+  "halves.b1":"<b>Chaque demande répondue en cinq minutes</b>",
+  "halves.b2":"Le rendez-vous est directement dans votre agenda",
+  "halves.b3":"<b>Un devis à partir d'un message vocal</b> — vous validez, nous tapons",
+  "halves.b4":"Chaque devis relancé aux jours 3, 7 et 14",
+  "halves.b5":"Vous savez pour chaque dossier où vous en êtes",
+  "halves.heardl":"Ce qu'on entend",
+  "halves.heard1":"« C'est trop calme. Je ne sais pas d'où viendra mon prochain chantier. »",
+  "halves.heard2":"« Je passe trois soirées par semaine à taper des devis. Et de la moitié, je n'entends plus jamais parler. »",
+  "halves.link1":"Voilà comment nous les faisons entrer",
+  "halves.link2":"Voilà comment nous les suivons",
+  "halves.mark1":"Moitié 1 · Plus","halves.mark2":"Moitié 2 · Mieux",
 
   "define.pos":"verbe — anglais",
   "define.m1":"amplifier, agrandir, rendre plus audible. Prendre un signal qui existe déjà — et le faire entendre à ceux qui doivent l'entendre.",
